@@ -11,4 +11,3 @@ import Foundation
 protocol CompanyDetailsRepository {
     func getCompanyDetails() -> AnyPublisher<CompanyDetails, Error>
 }
-
