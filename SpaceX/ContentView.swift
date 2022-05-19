@@ -7,16 +7,20 @@
 
 import SwiftUI
 import Combine
+import Resolver
 
-struct ContentView: View {
+struct ContentView<A: CompanyDetailSectionViewModel>: View {
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+          CompanyDetailsSectionView<A>()
+        }
+       
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView<DesignCompanyDetailsSectionViewModel>()
     }
 }

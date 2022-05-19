@@ -11,7 +11,7 @@ extension CompanyDetails: Decodable {
     enum CodingKeys: String, CodingKey {
         case summary = "summary"
         case companyName = "name"
-        case founderName = "founderName"
+        case founderName = "founder"
         case year = "founded"
         case employeesCount = "employees"
         case launchSitesCount = "launch_sites"
@@ -23,7 +23,7 @@ extension CompanyDetails: Decodable {
         companyName = try values.decode(String.self, forKey: .companyName)
         summary = try values.decode(String.self, forKey: .summary)
         founderName = try values.decode(String.self, forKey: .founderName)
-        year = try values.decode(String.self, forKey: .year)
+        year = try values.decode(Int.self, forKey: .year)
         employeesCount = try values.decode(Int.self, forKey: .employeesCount)
         launchSitesCount = try values.decode(Int.self, forKey: .launchSitesCount)
         valuation = try values.decode(Double.self, forKey: .valuation)

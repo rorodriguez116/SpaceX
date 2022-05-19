@@ -15,7 +15,7 @@ struct CompanyDetails {
     /// The name of the company's founder
     let founderName: String
     /// The year the company was founded.
-    let year: String
+    let year: Int
     /// The number of employees the company has.
     let employeesCount: Int
     /// The number of launch sites the company has.

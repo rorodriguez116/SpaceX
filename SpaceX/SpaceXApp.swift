@@ -6,12 +6,27 @@
 //
 
 import SwiftUI
+import Resolver
 
 @main
 struct SpaceXApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView<DefaultCompanyDetailsSectionViewModel>()
         }
+    }
+}
+
+extension Resolver: ResolverRegistering {
+    public static func registerAllServices() {
+        register {
+            DefaultCompanyDetailsRepository()
+        }
+        .implements(CompanyDetailsRepository.self)
+        
+        register {
+            DefaultCompanyDetailsWebService()
+        }
+        .implements(CompanyDetailsWebService.self)
     }
 }
