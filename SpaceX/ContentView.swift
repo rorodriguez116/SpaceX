@@ -9,18 +9,24 @@ import SwiftUI
 import Combine
 import Resolver
 
-struct ContentView<A: CompanyDetailSectionViewModel>: View {
+struct ContentView<A: CompanyDetailSectionViewModel, B: LaunchesListSectionViewModel>: View {
     
     var body: some View {
         NavigationView {
-          CompanyDetailsSectionView<A>()
+            ScrollView {
+                VStack {
+                    CompanyDetailsSectionView<A>()
+                    LaunchesListSectionView<B>()
+                }
+                .padding(.bottom, 100)
+            }
+            .navigationTitle("SpaceX")
         }
-       
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView<DesignCompanyDetailsSectionViewModel>()
+        ContentView<DesignCompanyDetailsSectionViewModel, DesignLaunchesListSectionViewModel>()
     }
 }

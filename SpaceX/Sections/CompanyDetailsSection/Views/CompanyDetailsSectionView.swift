@@ -17,7 +17,7 @@ struct CompanyDetailsSectionView<A: CompanyDetailSectionViewModel>: View {
     }
     
     var body: some View {
-        SectionView {
+        SectionView(title: "COMPANY") {
             Text(sectionText)
         }
         .onAppear {

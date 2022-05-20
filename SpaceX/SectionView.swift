@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SectionView<H: View>: View {
+    let title: String
     let content: () -> H
     
     var body: some View {
@@ -16,7 +17,7 @@ struct SectionView<H: View>: View {
                 .foregroundColor(.gray)
                 .frame(height: 40)
                 .overlay(
-                    Text("COMPANY")
+                    Text(title)
                         .bold()
                         .padding(.leading, 16)
                     ,alignment: .leading)
@@ -27,7 +28,8 @@ struct SectionView<H: View>: View {
         }
     }
     
-    init(@ViewBuilder contents:  @escaping () -> H) {
+    init(title: String, @ViewBuilder contents:  @escaping () -> H) {
+        self.title = title
         self.content = contents
     }
 }
