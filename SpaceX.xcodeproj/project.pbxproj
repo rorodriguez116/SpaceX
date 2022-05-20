@@ -33,6 +33,10 @@
 		A9596845283707130053AEB6 /* Launch.json in Resources */ = {isa = PBXBuildFile; fileRef = A9596844283707120053AEB6 /* Launch.json */; };
 		A959684728370ABD0053AEB6 /* LaunchesListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684628370ABD0053AEB6 /* LaunchesListSectionView.swift */; };
 		A959684928370E840053AEB6 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684828370E840053AEB6 /* Mock.swift */; };
+		A959684B28371BA40053AEB6 /* RocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684A28371BA40053AEB6 /* RocketRepository.swift */; };
+		A959684D28371BCD0053AEB6 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684C28371BCD0053AEB6 /* Rocket.swift */; };
+		A959684F28371C4B0053AEB6 /* RocketWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684E28371C4B0053AEB6 /* RocketWebService.swift */; };
+		A959685128371ED20053AEB6 /* Combine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959685028371ED20053AEB6 /* Combine+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,10 @@
 		A9596844283707120053AEB6 /* Launch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Launch.json; sourceTree = "<group>"; };
 		A959684628370ABD0053AEB6 /* LaunchesListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListSectionView.swift; sourceTree = "<group>"; };
 		A959684828370E840053AEB6 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
+		A959684A28371BA40053AEB6 /* RocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketRepository.swift; sourceTree = "<group>"; };
+		A959684C28371BCD0053AEB6 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
+		A959684E28371C4B0053AEB6 /* RocketWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketWebService.swift; sourceTree = "<group>"; };
+		A959685028371ED20053AEB6 /* Combine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +266,8 @@
 				A959683B2836E8670053AEB6 /* LaunchRepository.swift */,
 				A959683D2836E89A0053AEB6 /* LaunchWebService.swift */,
 				A95968412837047A0053AEB6 /* Launch+Extensions.swift */,
+				A959684A28371BA40053AEB6 /* RocketRepository.swift */,
+				A959684E28371C4B0053AEB6 /* RocketWebService.swift */,
 			);
 			path = DataAccess;
 			sourceTree = "<group>";
@@ -266,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				A959683F2836E8E20053AEB6 /* Launch.swift */,
+				A959684C28371BCD0053AEB6 /* Rocket.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -275,6 +286,7 @@
 			children = (
 				A9596844283707120053AEB6 /* Launch.json */,
 				A959684828370E840053AEB6 /* Mock.swift */,
+				A959685028371ED20053AEB6 /* Combine+Extensions.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -420,6 +432,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A959684B28371BA40053AEB6 /* RocketRepository.swift in Sources */,
+				A959684F28371C4B0053AEB6 /* RocketWebService.swift in Sources */,
 				A95968422837047A0053AEB6 /* Launch+Extensions.swift in Sources */,
 				A959681E2836BDD60053AEB6 /* CompanyDetails+Extensions.swift in Sources */,
 				A95968182836BD690053AEB6 /* CompanyDetails.swift in Sources */,
@@ -428,6 +442,8 @@
 				A95967ED2836AF880053AEB6 /* ContentView.swift in Sources */,
 				A959683A2836E7F60053AEB6 /* LaunchesListSectionViewModel.swift in Sources */,
 				A959682F2836E5590053AEB6 /* SectionView.swift in Sources */,
+				A959684D28371BCD0053AEB6 /* Rocket.swift in Sources */,
+				A959685128371ED20053AEB6 /* Combine+Extensions.swift in Sources */,
 				A959681C2836BDBC0053AEB6 /* CompanyDetailsRepository.swift in Sources */,
 				A95967EB2836AF880053AEB6 /* SpaceXApp.swift in Sources */,
 				A95968292836D6240053AEB6 /* CompanyDetailsWebService.swift in Sources */,

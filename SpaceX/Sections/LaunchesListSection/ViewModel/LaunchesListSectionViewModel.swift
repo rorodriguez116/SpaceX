@@ -18,7 +18,8 @@ protocol LaunchesListSectionViewModel: ObservableObject {
 }
 
 final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
-    @Injected var repository: LaunchRepository
+    @Injected var launchRepository: LaunchRepository
+    @Injected var rocketRepository: RocketRepository
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -27,7 +28,26 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     init() {}
     
     func getLaunchesList() {
-        repository.getLaunchesList()
+        launchRepository
+            .getLaunchesList()
+            .then { _launches -> AnyPublisher<[Launch], Error> in
+                let ids = _launches.map { $0.rocketId }
+                return self.rocketRepository.getRocketsFor(ids: ids)
+                    .map { rockets in
+                        let collection = _launches.compactMap { launch -> Launch in
+                            guard let rocket = rockets.first(where: { $0.id == launch.rocketId }) else { return launch }
+                            
+                            var _launch = launch
+                            _launch.rocketName = rocket.name
+                            _launch.rocketType = rocket.type
+                            
+                            return _launch
+                        }
+                        
+                        return collection
+                    }
+                    .eraseToAnyPublisher()
+            }
             .receive(on: RunLoop.main)
             .sink { completion in
                 print(completion)

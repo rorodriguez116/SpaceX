@@ -38,5 +38,15 @@ extension Resolver: ResolverRegistering {
             DefaultLaunchWebService()
         }
         .implements(LaunchWebService.self)
+        
+        register {
+            DefaultRocketWebService()
+        }
+        .implements(RocketWebService.self)
+        
+        register {
+            DefaultRocketRepository()
+        }
+        .implements(RocketRepository.self)
     }
 }
