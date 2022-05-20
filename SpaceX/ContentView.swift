@@ -14,7 +14,7 @@ struct ContentView<A: CompanyDetailSectionViewModel, B: LaunchesListSectionViewM
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack {
+                LazyVStack {
                     CompanyDetailsSectionView<A>()
                     LaunchesListSectionView<B>()
                 }
@@ -22,11 +22,13 @@ struct ContentView<A: CompanyDetailSectionViewModel, B: LaunchesListSectionViewM
             }
             .navigationTitle("SpaceX")
         }
+        .colorScheme(.dark)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView<DesignCompanyDetailsSectionViewModel, DesignLaunchesListSectionViewModel>()
+            .colorScheme(.dark)
     }
 }

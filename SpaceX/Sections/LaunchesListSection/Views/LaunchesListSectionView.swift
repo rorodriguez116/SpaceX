@@ -18,6 +18,38 @@ extension Calendar {
     }
 }
 
+struct YearMultipleSelectionPicker: View {
+    @State var years: [Int]
+    
+    @Binding var selectedYears: [Int]
+    
+    var body: some View {
+        VStack {
+            ForEach(years, id: \.self) { year in
+                Button {
+                    withAnimation {
+                        if selectedYears.contains(year) {
+                            selectedYears.removeAll { $0 == year }
+                        } else {
+                            self.selectedYears.append(year)
+                        }
+                    }
+                } label: {
+                    HStack {
+                        if selectedYears.contains(year) {
+                            Label("\(year)", systemImage: "checkmark")
+                        } else {
+                            Text("\(year)")
+                        }
+                    }
+                }
+                .id(year)
+            }
+        }
+    }
+}
+
+
 struct LaunchCellView: View {
     struct LaunchCellViewModel {
         private let launch: Launch
@@ -80,7 +112,7 @@ struct LaunchCellView: View {
 
 struct LaunchesListSectionView<A: LaunchesListSectionViewModel>: View {
     @StateObject private var viewmodel = A()
-    
+
     let dateFormatter = DateFormatter()
     
     func model(for launch: Launch) -> LaunchCellView.LaunchCellViewModel {
@@ -95,10 +127,43 @@ struct LaunchesListSectionView<A: LaunchesListSectionViewModel>: View {
     
     var body: some View {
         SectionView(title: "LAUNCHES") {
-            VStack {
+            LazyVStack {
                 ForEach(viewmodel.launches) { launch  in
                     LaunchCellView(model: model(for: launch))
                 }
+            }
+        }
+        .toolbar {
+            ToolbarItem(placement: .primaryAction) {
+                Menu {
+                    Section(header: Text("Sort")) {
+                        Picker(selection: $viewmodel.sort, label: Text("Sorting options")) {
+                            Text("ASC").tag(SortOrder.forward)
+                            Text("DESC").tag(SortOrder.reverse)
+                        }
+                    }
+                    
+                    Section(header: Text("Filter")) {
+                        Picker(selection: $viewmodel.status, label: Text("Sorting options")) {
+                            Text("All")
+                                .tag(LaunchStatusFilter.all)
+                            
+                            Text("Successful")
+                                .tag(LaunchStatusFilter.successOnly)
+                        
+                            Text("Failed")
+                                .tag(LaunchStatusFilter.failedOnly)
+                        }
+                        
+                        Text("Years")
+                            .contextMenu {
+                                YearMultipleSelectionPicker(years: Array(2005..<2022), selectedYears: $viewmodel.years)
+                            }
+                    }
+                }
+            label: {
+                Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
+            }
             }
         }
         .onAppear {
