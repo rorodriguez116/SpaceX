@@ -44,7 +44,7 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
                             return _launch
                         }
                         
-                        return collection
+                        return collection.sorted { $0.date > $1.date }
                     }
                     .eraseToAnyPublisher()
             }
