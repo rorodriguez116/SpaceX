@@ -15,7 +15,7 @@ struct SectionView<H: View>: View {
         VStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(Color(.tertiarySystemBackground))
-                .frame(height: 30)
+                .frame(height: 34)
                 .overlay(
                     Text(title)
                         .font(.system(size: 16))

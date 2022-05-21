@@ -16,40 +16,40 @@ struct LaunchCellView: View {
     
     func detailRow(label: String, value: String, bold: Bool = false) -> some View {
         HStack {
-            if bold {
-                Text(label)
-                    .bold()
-            } else {
-                Text(label)
-            }
+            Text(label)
             
             Spacer()
             
-            Text(value)
-                .font(.system(size: 16))
+            if bold {
+                Text(value)
+                    .fontWeight(.bold)
+            } else {
+                Text(value)
+                    .multilineTextAlignment(.trailing)
+                      .font(.system(size: 16))
+            }
         }
     }
     
     var body: some View {
-        VStack(spacing: 20) {
-            HStack(alignment: .center) {
-                KFImage(model.missionImageUrl)
-                    .resizable()
-                    .frame(width: 45, height: 45, alignment: .center)
-                
-                VStack(spacing: 4.5) {
-                    detailRow(label: "Mission:", value: model.missionName, bold: true)
-                    detailRow(label: "Date / time:", value: model.dateTime)
-                    detailRow(label: "Rocket:", value: model.rocketInfo)
-                    detailRow(label: model.daysLabel, value: model.daysDiffString)
+        VStack(alignment: .leading, spacing: 20) {
+            HStack(alignment: .top, spacing: 30) {
+                HStack(alignment: .top) {
+                    KFImage(model.missionImageUrl)
+                        .resizable()
+                        .frame(width: 45, height: 45, alignment: .center)
+                    
+                    VStack(alignment: .leading, spacing: 4.5) {
+                        detailRow(label: "Mission:", value: model.missionName, bold: true)
+                        detailRow(label: "Date/time:", value: model.dateTime)
+                        detailRow(label: "Rocket:", value: model.rocketInfo)
+                        detailRow(label: model.daysLabel, value: model.daysDiffString)
+                    }
                 }
-                
-                Image(systemName: model.status == .undetermined ? "questionmark" : model.status == .success ? "checkmark" : "xmark.circle")
-                    .frame(width: 12, height: 12, alignment: .center)
-                
-                Circle()
-                    .foregroundColor(model.status == .undetermined ? .clear : model.status == .success ? .green : .red)
-                    .frame(width: 6, height: 6, alignment: .center)
+                                
+                Image(systemName: model.status == .undetermined ? "questionmark" : model.status == .success ? "checkmark" : "xmark")
+                    .frame(width: 16, height: 16, alignment: .center)
+                    .padding(.top, 4)
             }
             
             Rectangle()
