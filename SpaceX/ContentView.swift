@@ -14,10 +14,11 @@ struct ContentView<A: CompanyDetailSectionViewModel, B: LaunchesListSectionViewM
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVStack {
+                LazyVStack(spacing: 20) {
                     CompanyDetailsSectionView<A>()
                     LaunchesListSectionView<B>()
                 }
+                .padding(.top, 16)
                 .padding(.bottom, 100)
             }
             .navigationTitle("SpaceX")

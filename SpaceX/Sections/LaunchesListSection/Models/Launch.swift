@@ -11,6 +11,7 @@ struct Launch: Identifiable, Hashable {
     enum Status: Hashable {
         case success
         case failure
+        case undetermined
     }
     
     let id: String 
@@ -20,7 +21,7 @@ struct Launch: Identifiable, Hashable {
     var rocketName: String = ""
     var rocketType: String = ""
     let missionImageUrl: URL?
-    var status: Status?
+    var status: Status
     let articleUrl: URL?
     let videoId: String?
     let wikiUrl: URL?

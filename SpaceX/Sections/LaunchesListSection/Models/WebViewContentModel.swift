@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum WebContentModel: Identifiable {
+    var id: UUID { UUID() }
+    
+    case video(youtubeId: String)
+    case page(url: URL)
+}

@@ -13,19 +13,20 @@ struct SectionView<H: View>: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Rectangle()
-                .foregroundColor(.gray)
-                .frame(height: 40)
+            RoundedRectangle(cornerRadius: 8)
+                .foregroundColor(Color(.tertiarySystemBackground))
+                .frame(height: 30)
                 .overlay(
                     Text(title)
+                        .font(.system(size: 16))
                         .bold()
-                        .padding(.leading, 16)
+                        .padding(.leading, 12)
                     ,alignment: .leading)
             
             content()
-                .padding(.horizontal, 16)
             
         }
+        .padding(.horizontal, 12)
     }
     
     init(title: String, @ViewBuilder contents:  @escaping () -> H) {

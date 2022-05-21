@@ -44,9 +44,14 @@ extension Launch: Decodable {
         }
         
         id = try values.decode(String.self, forKey: .id)
-        status = try values.decode(Bool?.self, forKey: .status) ?? false ? .success : .failure
         articleUrl = links.article
         videoId = links.youtube_id
         wikiUrl = links.wikipedia
+        
+        if let _status = try values.decode(Bool?.self, forKey: .status) {
+            status = _status ? .success : .failure
+        } else {
+            status = .undetermined
+        }
     }
 }

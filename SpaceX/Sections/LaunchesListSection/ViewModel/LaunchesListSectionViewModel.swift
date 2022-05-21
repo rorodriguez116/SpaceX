@@ -14,7 +14,9 @@ protocol LaunchesListSectionViewModel: ObservableObject {
     var sort: SortOrder { get set }
     var status: LaunchStatusFilter { get set }
     var years: [Int] { get set }
-    
+    var launchYears: [Int] { get set }
+    var state: SectionState { get }
+
     init()
     
     func getLaunchesList()
@@ -26,7 +28,7 @@ enum LaunchStatusFilter {
     case all
 }
 
-final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
+class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     @Injected var launchRepository: LaunchRepository
     @Injected var rocketRepository: RocketRepository
     
@@ -39,7 +41,11 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     @Published var status: LaunchStatusFilter = .all
     @Published var years = [Int]()
     
-    init() {
+    var launchYears: [Int] = []
+    
+    @Published private(set) var state: SectionState = .idle
+    
+    required init() {
         Publishers.CombineLatest3($status, $years, $sort).sink { status, years, sort in
             // Read
             var launches = self.launches_
@@ -70,71 +76,59 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     }
     
     func getLaunchesList() {
-        launchRepository
-            .getLaunchesList()
-            .then { _launches -> AnyPublisher<[Launch], Error> in
-                let ids = _launches.map { $0.rocketId }
-                return self.rocketRepository.getRocketsFor(ids: ids)
-                    .map { rockets in
-                        let collection = _launches.compactMap { launch -> Launch in
-                            guard let rocket = rockets.first(where: { $0.id == launch.rocketId }) else { return launch }
+        guard state.canLoad else { return }
+        state = .loading
+
+        if Bool.random() == true{
+            launchRepository
+                .getLaunchesList()
+                .then { _launches -> AnyPublisher<[Launch], Error> in
+                    let ids = _launches.map { $0.rocketId }
+                    let uniqueIds = Array(Set<String>(ids))
+                    return self.rocketRepository.getRocketsFor(ids: uniqueIds)
+                        .map { rockets in
+                            let collection = _launches.compactMap { launch -> Launch in
+                                guard let rocket = rockets.first(where: { $0.id == launch.rocketId }) else { return launch }
+                                
+                                var _launch = launch
+                                _launch.rocketName = rocket.name
+                                _launch.rocketType = rocket.type
+                                
+                                return _launch
+                            }
                             
-                            var _launch = launch
-                            _launch.rocketName = rocket.name
-                            _launch.rocketType = rocket.type
-                            
-                            return _launch
+                            return collection.sorted { $0.date < $1.date }
                         }
-                        
-                        return collection.sorted { $0.date < $1.date }
+                        .eraseToAnyPublisher()
+                }
+                .receive(on: RunLoop.main)
+                .sink { [weak self] completion in
+                    if case .failure = completion {
+                        self?.state = .failed("Something went wrong.")
                     }
-                    .eraseToAnyPublisher()
-            }
-            .receive(on: RunLoop.main)
-            .sink { completion in
-                print(completion)
-            } receiveValue: { details in
-                print(details)
-                self.launches_ = details
-                self.launches = details
-            }
-            .store(in: &self.subscriptions)
+                } receiveValue: { [weak self] result in
+                    guard let self = self else { return }
+                    self.launches_ = result
+                    self.launches = result
+                    self.launchYears = Array(Set<Int>(result.map { Calendar.current.component(.year, from: $0.date) }))
+                    self.state = .loaded
+                }
+                .store(in: &self.subscriptions)
+
+        } else {
+            state = .failed("Something went wrong.")
+        }
     }
 }
 
-final class DesignLaunchesListSectionViewModel: LaunchesListSectionViewModel {
-    @Published var launches = [Launch]()
-    
-    @Published var sort: SortOrder = .forward
-    @Published var status: LaunchStatusFilter = .all
-    @Published var years = [Int]()
-    
-    private var subscriptions = Set<AnyCancellable>()
-
-    init() {        
-        $sort.sink { sort in
-            self.launches = self.launches.sorted { a, b in
-                if sort == .forward {
-                    return a.date < b.date
-                } else {
-                    return a.date > b.date
-                }
-            }
-        }
-        .store(in: &self.subscriptions)
+final class DesignLaunchesListSectionViewModel: DefaultLaunchesListSectionViewModel {
+    required init() {
+        super.init()
         
-        $status.sink { status in
-            
-        }
-        .store(in: &self.subscriptions)
-        
-        $years.sink { years in
-            
-        }
-        .store(in: &self.subscriptions)
+        launchYears = Array(2006..<2023)
     }
     
-    func getLaunchesList() {
+    override func getLaunchesList() {
         self.launches = Mock.launches
     }
 }
