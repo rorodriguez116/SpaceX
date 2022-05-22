@@ -18,7 +18,7 @@ struct DefaultCompanyDetailsWebService: CompanyDetailsWebService {
     func getCompanyDetails() -> AnyPublisher<CompanyDetails, Error> {
         Rapide
             .https
-            .host("api.spacexdata.com")
+            .host(EnvironmentKeys.domainName)
             .path("/v4/company")
             .authorization(.none)
             .params([:])

@@ -8,8 +8,8 @@
 import Foundation
 
 struct EnvironmentKeys {
-    static var baseUrl: String {
-        guard let info = Bundle.main.infoDictionary, let domain = info["Base_Url"] as? String else { fatalError("MISSING ENVIRONMENT CONFIGURATION") }
+    static var domainName: String {
+        guard let info = Bundle.main.infoDictionary, let domain = info["DOMAIN_NAME"] as? String else { fatalError("MISSING ENVIRONMENT CONFIGURATION") }
         
         return domain
     }

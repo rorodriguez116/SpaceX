@@ -18,7 +18,7 @@ struct DefaultLaunchWebService: LaunchWebService {
     func getLatestLaunches() -> AnyPublisher<[Launch], Error> {
         Rapide
             .https
-            .host("api.spacexdata.com")
+            .host(EnvironmentKeys.domainName)
             .path("/v4/launches")
             .authorization(.none)
             .params([:])

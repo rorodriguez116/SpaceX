@@ -45,6 +45,8 @@
 		A96C27F128386D03002E7200 /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27F028386D03002E7200 /* Calendar+Extensions.swift */; };
 		A96C27F528395D43002E7200 /* SectionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27F428395D43002E7200 /* SectionState.swift */; };
 		A96C27F7283960AD002E7200 /* ErrorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27F6283960AD002E7200 /* ErrorCell.swift */; };
+		A96C27F92839C73D002E7200 /* Config_Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A96C27F82839C73D002E7200 /* Config_Prod.xcconfig */; };
+		A96C27FD2839C8EE002E7200 /* EnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27FC2839C8EE002E7200 /* EnvironmentKeys.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,10 @@
 		A96C27F028386D03002E7200 /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		A96C27F428395D43002E7200 /* SectionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionState.swift; sourceTree = "<group>"; };
 		A96C27F6283960AD002E7200 /* ErrorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCell.swift; sourceTree = "<group>"; };
+		A96C27F82839C73D002E7200 /* Config_Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config_Prod.xcconfig; sourceTree = "<group>"; };
+		A96C27FA2839C78C002E7200 /* Config_Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config_Dev.xcconfig; sourceTree = "<group>"; };
+		A96C27FB2839C84D002E7200 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A96C27FC2839C8EE002E7200 /* EnvironmentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,12 +164,15 @@
 		A95967E92836AF880053AEB6 /* SpaceX */ = {
 			isa = PBXGroup;
 			children = (
+				A96C27FB2839C84D002E7200 /* Info.plist */,
 				A9596843283706F30053AEB6 /* Mock */,
 				A95968152836BD510053AEB6 /* Sections */,
 				A95967EA2836AF880053AEB6 /* SpaceXApp.swift */,
 				A95967EC2836AF880053AEB6 /* ContentView.swift */,
 				A95967EE2836AF8A0053AEB6 /* Assets.xcassets */,
 				A95967F02836AF8A0053AEB6 /* Preview Content */,
+				A96C27FE283A7042002E7200 /* SupportingFiles */,
+				A96C27FC2839C8EE002E7200 /* EnvironmentKeys.swift */,
 			);
 			path = SpaceX;
 			sourceTree = "<group>";
@@ -323,6 +332,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		A96C27FE283A7042002E7200 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A96C27F82839C73D002E7200 /* Config_Prod.xcconfig */,
+				A96C27FA2839C78C002E7200 /* Config_Dev.xcconfig */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -438,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A95967F22836AF8A0053AEB6 /* Preview Assets.xcassets in Resources */,
+				A96C27F92839C73D002E7200 /* Config_Prod.xcconfig in Resources */,
 				A9596845283707130053AEB6 /* Launch.json in Resources */,
 				A95967EF2836AF8A0053AEB6 /* Assets.xcassets in Resources */,
 			);
@@ -466,6 +485,7 @@
 			files = (
 				A959684B28371BA40053AEB6 /* RocketRepository.swift in Sources */,
 				A959684F28371C4B0053AEB6 /* RocketWebService.swift in Sources */,
+				A96C27FD2839C8EE002E7200 /* EnvironmentKeys.swift in Sources */,
 				A95968422837047A0053AEB6 /* Launch+Extensions.swift in Sources */,
 				A959681E2836BDD60053AEB6 /* CompanyDetails+Extensions.swift in Sources */,
 				A95968182836BD690053AEB6 /* CompanyDetails.swift in Sources */,
@@ -531,6 +551,7 @@
 /* Begin XCBuildConfiguration section */
 		A95968092836AF8A0053AEB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96C27FA2839C78C002E7200 /* Config_Dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -591,6 +612,7 @@
 		};
 		A959680A2836AF8A0053AEB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96C27F82839C73D002E7200 /* Config_Prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -645,6 +667,7 @@
 		};
 		A959680C2836AF8A0053AEB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96C27FA2839C78C002E7200 /* Config_Dev.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -654,11 +677,13 @@
 				DEVELOPMENT_TEAM = YAFLRP6JUR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpaceX/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -674,6 +699,7 @@
 		};
 		A959680D2836AF8A0053AEB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96C27F82839C73D002E7200 /* Config_Prod.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -683,11 +709,13 @@
 				DEVELOPMENT_TEAM = YAFLRP6JUR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SpaceX/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -703,6 +731,7 @@
 		};
 		A959680F2836AF8A0053AEB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96C27FA2839C78C002E7200 /* Config_Dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -723,6 +752,7 @@
 		};
 		A95968102836AF8A0053AEB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96C27F82839C73D002E7200 /* Config_Prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -743,6 +773,7 @@
 		};
 		A95968122836AF8A0053AEB6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96C27FA2839C78C002E7200 /* Config_Dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -761,6 +792,7 @@
 		};
 		A95968132836AF8A0053AEB6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A96C27F82839C73D002E7200 /* Config_Prod.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
