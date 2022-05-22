@@ -1,0 +1,11 @@
+//
+//  Config_Dev.xcconfig
+//  SpaceX
+//
+//  Created by Rolando Rodriguez on 5/21/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+DOMAIN_NAME = api.spacexdata.com
