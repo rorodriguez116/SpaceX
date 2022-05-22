@@ -32,11 +32,12 @@
 		A95968422837047A0053AEB6 /* Launch+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95968412837047A0053AEB6 /* Launch+Extensions.swift */; };
 		A9596845283707130053AEB6 /* Launch.json in Resources */ = {isa = PBXBuildFile; fileRef = A9596844283707120053AEB6 /* Launch.json */; };
 		A959684728370ABD0053AEB6 /* LaunchesListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684628370ABD0053AEB6 /* LaunchesListSectionView.swift */; };
-		A959684928370E840053AEB6 /* LaucnhesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684828370E840053AEB6 /* LaucnhesData.swift */; };
+		A959684928370E840053AEB6 /* ModelsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684828370E840053AEB6 /* ModelsData.swift */; };
 		A959684B28371BA40053AEB6 /* RocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684A28371BA40053AEB6 /* RocketRepository.swift */; };
 		A959684D28371BCD0053AEB6 /* Rocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684C28371BCD0053AEB6 /* Rocket.swift */; };
 		A959684F28371C4B0053AEB6 /* RocketWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959684E28371C4B0053AEB6 /* RocketWebService.swift */; };
 		A959685128371ED20053AEB6 /* Combine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A959685028371ED20053AEB6 /* Combine+Extensions.swift */; };
+		A96C0FC4283AE142005AE36B /* LaunchesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C0FC3283AE142005AE36B /* LaunchesListView.swift */; };
 		A96C27E728386BA2002E7200 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27E628386BA2002E7200 /* WebView.swift */; };
 		A96C27E928386BE8002E7200 /* LaunchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27E828386BE8002E7200 /* LaunchCellView.swift */; };
 		A96C27EB28386C19002E7200 /* LaunchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27EA28386C19002E7200 /* LaunchCellViewModel.swift */; };
@@ -56,6 +57,7 @@
 		A96C281D283AA8BD002E7200 /* CompanyDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C281C283AA8BD002E7200 /* CompanyDetailsTests.swift */; };
 		A96C281F283AA9D7002E7200 /* CompanyDetailsComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C281E283AA9D7002E7200 /* CompanyDetailsComplete.json */; };
 		A96C2821283AAA50002E7200 /* CompanyDetailsIncomplete.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C2820283AAA50002E7200 /* CompanyDetailsIncomplete.json */; };
+		A96C2823283AB3D2002E7200 /* Rockets.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C2822283AB3D2002E7200 /* Rockets.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,11 +104,12 @@
 		A95968412837047A0053AEB6 /* Launch+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Launch+Extensions.swift"; sourceTree = "<group>"; };
 		A9596844283707120053AEB6 /* Launch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Launch.json; sourceTree = "<group>"; };
 		A959684628370ABD0053AEB6 /* LaunchesListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListSectionView.swift; sourceTree = "<group>"; };
-		A959684828370E840053AEB6 /* LaucnhesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaucnhesData.swift; sourceTree = "<group>"; };
+		A959684828370E840053AEB6 /* ModelsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsData.swift; sourceTree = "<group>"; };
 		A959684A28371BA40053AEB6 /* RocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketRepository.swift; sourceTree = "<group>"; };
 		A959684C28371BCD0053AEB6 /* Rocket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rocket.swift; sourceTree = "<group>"; };
 		A959684E28371C4B0053AEB6 /* RocketWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketWebService.swift; sourceTree = "<group>"; };
 		A959685028371ED20053AEB6 /* Combine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Extensions.swift"; sourceTree = "<group>"; };
+		A96C0FC3283AE142005AE36B /* LaunchesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchesListView.swift; sourceTree = "<group>"; };
 		A96C27E628386BA2002E7200 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		A96C27E828386BE8002E7200 /* LaunchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCellView.swift; sourceTree = "<group>"; };
 		A96C27EA28386C19002E7200 /* LaunchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCellViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		A96C281C283AA8BD002E7200 /* CompanyDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsTests.swift; sourceTree = "<group>"; };
 		A96C281E283AA9D7002E7200 /* CompanyDetailsComplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CompanyDetailsComplete.json; sourceTree = "<group>"; };
 		A96C2820283AAA50002E7200 /* CompanyDetailsIncomplete.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CompanyDetailsIncomplete.json; sourceTree = "<group>"; };
+		A96C2822283AB3D2002E7200 /* Rockets.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Rockets.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,7 +202,7 @@
 		A95967F02836AF8A0053AEB6 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				A96C280B283A93E5002E7200 /* ViewModels */,
+				A96C280B283A93E5002E7200 /* Repositories */,
 				A96C280A283A93D6002E7200 /* Resources */,
 				A9596843283706F30053AEB6 /* Data */,
 				A95967F12836AF8A0053AEB6 /* Preview Assets.xcassets */,
@@ -309,6 +313,7 @@
 				A96C27E828386BE8002E7200 /* LaunchCellView.swift */,
 				A96C27E628386BA2002E7200 /* WebView.swift */,
 				A96C27F6283960AD002E7200 /* ErrorCell.swift */,
+				A96C0FC3283AE142005AE36B /* LaunchesListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,7 +344,7 @@
 		A9596843283706F30053AEB6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				A959684828370E840053AEB6 /* LaucnhesData.swift */,
+				A959684828370E840053AEB6 /* ModelsData.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -375,17 +380,18 @@
 			isa = PBXGroup;
 			children = (
 				A9596844283707120053AEB6 /* Launch.json */,
+				A96C2822283AB3D2002E7200 /* Rockets.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		A96C280B283A93E5002E7200 /* ViewModels */ = {
+		A96C280B283A93E5002E7200 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				A96C2808283A93B4002E7200 /* DesignLaunchesListSectionViewModel.swift */,
 				A96C2806283A938B002E7200 /* DesignCompanyDetailsSectionViewModel.swift */,
 			);
-			path = ViewModels;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		A96C280E283A974D002E7200 /* Utils */ = {
@@ -551,6 +557,7 @@
 				A95967F22836AF8A0053AEB6 /* Preview Assets.xcassets in Resources */,
 				A9596845283707130053AEB6 /* Launch.json in Resources */,
 				A95967EF2836AF8A0053AEB6 /* Assets.xcassets in Resources */,
+				A96C2823283AB3D2002E7200 /* Rockets.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,10 +613,11 @@
 				A95968402836E8E20053AEB6 /* Launch.swift in Sources */,
 				A96C27E928386BE8002E7200 /* LaunchCellView.swift in Sources */,
 				A959683C2836E8670053AEB6 /* LaunchRepository.swift in Sources */,
+				A96C0FC4283AE142005AE36B /* LaunchesListView.swift in Sources */,
 				A96C27F528395D43002E7200 /* SectionState.swift in Sources */,
 				A959683E2836E89A0053AEB6 /* LaunchWebService.swift in Sources */,
 				A959684728370ABD0053AEB6 /* LaunchesListSectionView.swift in Sources */,
-				A959684928370E840053AEB6 /* LaucnhesData.swift in Sources */,
+				A959684928370E840053AEB6 /* ModelsData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

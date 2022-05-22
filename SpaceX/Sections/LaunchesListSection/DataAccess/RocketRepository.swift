@@ -25,3 +25,19 @@ struct DefaultRocketRepository: RocketRepository {
         webservice.getRocketsFor(ids: ids)
     }
 }
+
+struct DesignRocketRepository: RocketRepository {
+    func getRocketFor(id: String) -> AnyPublisher<Rocket, Error> {
+        Future<Rocket, Error> { promise in
+            promise(.success(Rocket.previewRockets.first!))
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getRocketsFor(ids: [String]) -> AnyPublisher<[Rocket], Error> {
+        Future<[Rocket], Error> { promise in
+            promise(.success(Rocket.previewRockets))
+        }
+        .eraseToAnyPublisher()
+    }
+}

@@ -14,8 +14,7 @@ final class DesignCompanyDetailsSectionViewModel: DefaultCompanyDetailsSectionVi
         guard state.canLoad else { return }
         self.state = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.companyDetails = CompanyDetails.previewCompanyDetails
-            self.state = .loaded
+            self.state = .loaded(CompanyDetails.previewCompanyDetails)
         }
     }
 }

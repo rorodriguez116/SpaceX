@@ -7,46 +7,15 @@
 
 import SwiftUI
 import Kingfisher
+import Resolver
 
-struct LaunchesListSectionView<A: LaunchesListSectionViewModel>: View {
-    @StateObject private var viewmodel = A()
-
-    let dateFormatter = DateFormatter()
-    
-    func model(for launch: Launch) -> LaunchCellViewModel {
-        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm"
-        let fullDate = dateFormatter.string(from: launch.date)
-        let split = fullDate.split(separator: " ")
-        let timeString = String(split[1])
-        let dateString = String(split[0])
-        
-        return .init(launch: launch, date: dateString, time: timeString)
-    }
+struct LaunchesListSectionView: View {
+    @StateObject private var viewmodel = DefaultLaunchesListSectionViewModel(launchRepository: Resolver.resolve(), rocketRepository: Resolver.resolve())
     
     var body: some View {
         SectionView(title: "LAUNCHES") {
-            LazyVStack(spacing: 10) {
-                switch viewmodel.state {
-                case .idle:
-                    Text("Placeholder")
-                case .loading:
-                    Spacer()
-                    
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle())
-                    
-                    Spacer()
-                case .loaded:
-                    ForEach(viewmodel.launches) { launch  in
-                        LaunchCellView(model: model(for: launch))
-                    }
-                    .padding(.top, 16)
-                case .failed(let message):
-                    ErrorCell(message: message) {
-                        viewmodel.getLaunchesList()
-                    }
-                    .padding(.top, 60)
-                }
+            LaunchesListView(state: viewmodel.state) {
+                viewmodel.getLaunchesList()
             }
         }
         .toolbar {
@@ -90,6 +59,6 @@ struct LaunchesListSectionView<A: LaunchesListSectionViewModel>: View {
 
 struct LaunchesListSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchesListSectionView<DesignLaunchesListSectionViewModel>()
+        LaunchesListSectionView()
     }
 }

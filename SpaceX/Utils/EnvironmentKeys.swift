@@ -7,10 +7,18 @@
 
 import Foundation
 
-struct EnvironmentKeys {
-    static var domainName: String {
-        guard let info = Bundle.main.infoDictionary, let domain = info["DOMAIN_NAME"] as? String else { fatalError("MISSING ENVIRONMENT CONFIGURATION") }
-        
-        return domain
+enum Config {
+    static var isPreview: Bool {
+        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+    }
+    
+    struct EnvironmentKeys {
+        static var domainName: String {
+            guard let info = Bundle.main.infoDictionary, let domain = info["DOMAIN_NAME"] as? String else { fatalError("MISSING ENVIRONMENT CONFIGURATION") }
+            
+            return domain
+        }
     }
 }
+
+

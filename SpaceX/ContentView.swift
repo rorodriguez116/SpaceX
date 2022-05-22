@@ -9,14 +9,14 @@ import SwiftUI
 import Combine
 import Resolver
 
-struct ContentView<A: CompanyDetailSectionViewModel, B: LaunchesListSectionViewModel>: View {
+struct ContentView<A: CompanyDetailSectionViewModel>: View {
     
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVStack(spacing: 20) {
                     CompanyDetailsSectionView<A>()
-                    LaunchesListSectionView<B>()
+                    LaunchesListSectionView()
                 }
                 .padding(.top, 16)
                 .padding(.bottom, 100)
@@ -29,7 +29,7 @@ struct ContentView<A: CompanyDetailSectionViewModel, B: LaunchesListSectionViewM
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView<DesignCompanyDetailsSectionViewModel, DesignLaunchesListSectionViewModel>()
+        ContentView<DesignCompanyDetailsSectionViewModel>()
             .colorScheme(.dark)
     }
 }

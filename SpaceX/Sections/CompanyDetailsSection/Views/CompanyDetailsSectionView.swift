@@ -12,7 +12,7 @@ struct CompanyDetailsSectionView<A: CompanyDetailSectionViewModel>: View {
 
     var body: some View {
         SectionView(title: "COMPANY") {
-            if viewmodel.state == .loaded {
+            if case .loaded = viewmodel.state {
                 Text(viewmodel.sectionText)
             }
         }

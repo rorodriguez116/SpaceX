@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum SectionState: Equatable {
+enum ListState<T: Equatable>: Equatable {
     case idle
     case loading
-    case loaded
+    case loaded(T)
     case failed(String)
 
     var canLoad: Bool {

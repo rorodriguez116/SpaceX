@@ -20,3 +20,12 @@ struct DefaultLaunchRepository: LaunchRepository {
         webservice.getLatestLaunches()
     }
 }
+
+struct DesignLaunchRepository: LaunchRepository {
+    func getLaunchesList() -> AnyPublisher<[Launch], Error> {
+        Future<[Launch], Error> { promise in
+            promise(.success(Launch.previewLaunches))
+        }
+        .eraseToAnyPublisher()
+    }
+}

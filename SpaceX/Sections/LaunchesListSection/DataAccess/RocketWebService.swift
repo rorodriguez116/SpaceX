@@ -22,7 +22,7 @@ struct DefaultRocketWebService: RocketWebService {
     func getRocketFor(id: String) -> AnyPublisher<Rocket, Error> {
         Rapide
             .https
-            .host(EnvironmentKeys.domainName)
+            .host(Config.EnvironmentKeys.domainName)
             .path("/v4/rockets/\(id)")
             .authorization(.none)
             .params([:])

@@ -19,3 +19,14 @@ struct MockCompanyDetailsRepository: CompanyDetailsRepository {
         .eraseToAnyPublisher()
     }
 }
+
+struct MockLaunchRepository: LaunchRepository {
+    var getLaunchesListResult: Result<[Launch], Error> = .failure(AnyLocalizedError())
+
+    func getLaunchesList() -> AnyPublisher<[Launch], Error> {
+        Future<[Launch], Error> { promise in
+            promise(getLaunchesListResult)
+        }
+        .eraseToAnyPublisher()
+    }
+}

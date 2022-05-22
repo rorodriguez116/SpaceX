@@ -10,9 +10,8 @@ import Combine
 import Resolver
 
 protocol CompanyDetailSectionViewModel: ObservableObject {
-    var companyDetails: CompanyDetails? { get set }
     var sectionText: String { get }
-    var state: SectionState { get }
+    var state: ListState<CompanyDetails> { get }
 
     init() 
     
@@ -25,8 +24,7 @@ class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
     
     private var subscriptions = Set<AnyCancellable>()
     
-    @Published var companyDetails: CompanyDetails?
-    @Published var state: SectionState = .idle
+    @Published var state: ListState<CompanyDetails> = .idle
 
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -37,7 +35,7 @@ class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
     }()
     
     var sectionText: String {
-        guard let details = companyDetails else { return "Loading..." }
+        guard case let .loaded(details) = state else { return "Loading..." }
         
         let valuation = numberFormatter.string(from: NSNumber(value: details.valuation)) ?? "USD \(details.valuation)"
         
@@ -59,8 +57,7 @@ class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
             } receiveValue: { [weak self] details in
                 guard let self = self else { return }
                 
-                self.companyDetails = details
-                self.state = .loaded
+                self.state = .loaded(details)
             }
             .store(in: &self.subscriptions)
     }
