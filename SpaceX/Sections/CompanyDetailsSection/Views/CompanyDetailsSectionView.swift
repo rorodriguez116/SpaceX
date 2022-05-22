@@ -10,11 +10,11 @@ import SwiftUI
 struct CompanyDetailsSectionView<A: CompanyDetailSectionViewModel>: View {
     @StateObject private var viewmodel = A()
 
-  
-    
     var body: some View {
         SectionView(title: "COMPANY") {
-            Text(viewmodel.sectionText)
+            if viewmodel.state == .loaded {
+                Text(viewmodel.sectionText)
+            }
         }
         .onAppear {
             viewmodel.getCompanyDetails()

@@ -12,6 +12,8 @@ import Resolver
 protocol CompanyDetailSectionViewModel: ObservableObject {
     var companyDetails: CompanyDetails? { get set }
     var sectionText: String { get }
+    var state: SectionState { get }
+
     init() 
     
     func getCompanyDetails()
@@ -24,7 +26,8 @@ final class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel
     private var subscriptions = Set<AnyCancellable>()
     
     @Published var companyDetails: CompanyDetails?
-    
+    @Published private(set) var state: SectionState = .idle
+
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
@@ -44,13 +47,20 @@ final class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel
     init() {}
     
     func getCompanyDetails() {
+        guard state.canLoad else { return }
+        state = .loading
+        
         repository.getCompanyDetails()
             .receive(on: RunLoop.main)
-            .sink { completion in
-                print(completion)
-            } receiveValue: { details in
-                print(details)
+            .sink { [weak self] completion in
+                if case .failure = completion {
+                    self?.state = .failed("Something went wrong.")
+                }
+            } receiveValue: { [weak self] details in
+                guard let self = self else { return }
+                
                 self.companyDetails = details
+                self.state = .loaded
             }
             .store(in: &self.subscriptions)
     }
@@ -58,7 +68,8 @@ final class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel
 
 final class DesignCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
     @Published var companyDetails: CompanyDetails?
-    
+    @Published private(set) var state: SectionState = .idle
+
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
