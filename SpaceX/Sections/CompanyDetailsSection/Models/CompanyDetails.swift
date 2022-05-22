@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct CompanyDetails {
+struct CompanyDetails: Equatable {
     /// The name of the company.
     let companyName: String
     /// A summary of the company.
-    let summary: String
+    let summary: String?
     /// The name of the company's founder
     let founderName: String
     /// The year the company was founded.

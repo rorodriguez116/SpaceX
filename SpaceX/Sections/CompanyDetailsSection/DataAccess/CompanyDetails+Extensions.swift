@@ -21,7 +21,7 @@ extension CompanyDetails: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         companyName = try values.decode(String.self, forKey: .companyName)
-        summary = try values.decode(String.self, forKey: .summary)
+        summary = try values.decode(String?.self, forKey: .summary)
         founderName = try values.decode(String.self, forKey: .founderName)
         year = try values.decode(Int.self, forKey: .year)
         employeesCount = try values.decode(Int.self, forKey: .employeesCount)
