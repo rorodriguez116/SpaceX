@@ -30,23 +30,20 @@ extension Launch: Decodable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        let links = try values.decode(Links.self, forKey: .links)
         
         missionName = try values.decode(String.self, forKey: .missionName)
         let timestamp = try values.decode(Double.self, forKey: .date)
         date = Date(timeIntervalSince1970: timestamp)
         
         rocketId = try values.decode(String.self, forKey: .rocketId)
-        if let url = links.patch["small"] {
-            missionImageUrl = url
-        } else {
-            missionImageUrl = nil
-        }
         
         id = try values.decode(String.self, forKey: .id)
-        articleUrl = links.article
-        videoId = links.youtube_id
-        wikiUrl = links.wikipedia
+        
+        let links = try values.decode(Links?.self, forKey: .links)
+        articleUrl = links?.article
+        videoId = links?.youtube_id
+        wikiUrl = links?.wikipedia
+        missionImageUrl = links?.patch["small"]
         
         if let _status = try values.decode(Bool?.self, forKey: .status) {
             status = _status ? .success : .failure

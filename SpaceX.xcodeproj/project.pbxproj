@@ -52,6 +52,8 @@
 		A96C2807283A938B002E7200 /* DesignCompanyDetailsSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C2806283A938B002E7200 /* DesignCompanyDetailsSectionViewModel.swift */; };
 		A96C2809283A93B4002E7200 /* DesignLaunchesListSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C2808283A93B4002E7200 /* DesignLaunchesListSectionViewModel.swift */; };
 		A96C280D283A972C002E7200 /* BaseResourceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C280C283A972C002E7200 /* BaseResourceProvider.swift */; };
+		A96C2813283A9C1D002E7200 /* LaunchesComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C2812283A9C1C002E7200 /* LaunchesComplete.json */; };
+		A96C2818283AA421002E7200 /* LaunchesIncomplete.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C2817283AA421002E7200 /* LaunchesIncomplete.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +122,8 @@
 		A96C2806283A938B002E7200 /* DesignCompanyDetailsSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignCompanyDetailsSectionViewModel.swift; sourceTree = "<group>"; };
 		A96C2808283A93B4002E7200 /* DesignLaunchesListSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignLaunchesListSectionViewModel.swift; sourceTree = "<group>"; };
 		A96C280C283A972C002E7200 /* BaseResourceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseResourceProvider.swift; sourceTree = "<group>"; };
+		A96C2812283A9C1C002E7200 /* LaunchesComplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = LaunchesComplete.json; path = Schema/LaunchesComplete.json; sourceTree = "<group>"; };
+		A96C2817283AA421002E7200 /* LaunchesIncomplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LaunchesIncomplete.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +396,8 @@
 			isa = PBXGroup;
 			children = (
 				A96C27FF283A8CAC002E7200 /* LaunchesTest.swift */,
+				A96C2812283A9C1C002E7200 /* LaunchesComplete.json */,
+				A96C2817283AA421002E7200 /* LaunchesIncomplete.json */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -537,6 +543,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96C2818283AA421002E7200 /* LaunchesIncomplete.json in Resources */,
+				A96C2813283A9C1D002E7200 /* LaunchesComplete.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
