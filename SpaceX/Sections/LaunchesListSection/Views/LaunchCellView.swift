@@ -86,6 +86,6 @@ struct LaunchCellView: View {
 
 struct LaunchCellView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchCellView(model: LaunchCellViewModel(launch: Mock.launches.first!, date: "20/11/20", time: "21:30"))
+        LaunchCellView(model: LaunchCellViewModel(launch: Launch.previewLaunch, date: "20/11/20", time: "21:30"))
     }
 }

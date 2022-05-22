@@ -9,14 +9,6 @@
 import Combine
 import Foundation
 
-struct AnyLocalizedError: LocalizedError {
-    let errorDescription: String?
-
-    init(_ errorDescription: String? = nil) {
-        self.errorDescription = errorDescription
-    }
-}
-
 struct MockCompanyDetailsRepository: CompanyDetailsRepository {
     var getCompanyDetailsResult: Result<CompanyDetails, Error> = .failure(AnyLocalizedError())
     

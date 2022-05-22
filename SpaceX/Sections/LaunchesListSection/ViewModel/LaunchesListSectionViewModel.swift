@@ -43,7 +43,7 @@ class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     
     var launchYears: [Int] = []
     
-    @Published private(set) var state: SectionState = .idle
+    @Published var state: SectionState = .idle
     
     required init() {
         Publishers.CombineLatest3($status, $years, $sort).sink { status, years, sort in
@@ -113,17 +113,5 @@ class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
                 self.state = .loaded
             }
             .store(in: &self.subscriptions)
-    }
-}
-
-final class DesignLaunchesListSectionViewModel: DefaultLaunchesListSectionViewModel {
-    required init() {
-        super.init()
-        
-        launchYears = Array(2006..<2023)
-    }
-    
-    override func getLaunchesList() {
-        self.launches = Mock.launches
     }
 }

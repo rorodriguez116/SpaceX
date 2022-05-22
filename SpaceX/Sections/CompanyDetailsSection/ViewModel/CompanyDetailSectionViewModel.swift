@@ -20,13 +20,13 @@ protocol CompanyDetailSectionViewModel: ObservableObject {
 }
 
 
-final class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
+class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
     @Injected var repository: CompanyDetailsRepository
     
     private var subscriptions = Set<AnyCancellable>()
     
     @Published var companyDetails: CompanyDetails?
-    @Published private(set) var state: SectionState = .idle
+    @Published var state: SectionState = .idle
 
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -44,7 +44,7 @@ final class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel
         return "\(details.companyName) was founded by \(details.founderName) in \(details.year). It has now \(details.employeesCount) employees, \(details.launchSitesCount) launch sites, and is valued at \(valuation)."
     }
     
-    init() {}
+    required init() {}
     
     func getCompanyDetails() {
         guard state.canLoad else { return }
@@ -63,30 +63,5 @@ final class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel
                 self.state = .loaded
             }
             .store(in: &self.subscriptions)
-    }
-}
-
-final class DesignCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
-    @Published var companyDetails: CompanyDetails?
-    @Published private(set) var state: SectionState = .idle
-
-    let numberFormatter: NumberFormatter = {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = "USD"
-        formatter.currencySymbol = "$"
-        return formatter
-    }()
-    
-    var sectionText: String {
-        guard let details = companyDetails else { return "Loading..." }
-        
-        let valuation = numberFormatter.string(from: NSNumber(value: details.valuation)) ?? "USD \(details.valuation)"
-        
-        return "\(details.companyName) was founded by \(details.founderName) in \(details.year). It has now \(details.employeesCount) employees, \(details.launchSitesCount) launch sites, and is valued at \(valuation)."
-    }
-    
-    func getCompanyDetails() {
-        self.companyDetails = Mock.companyDetail
     }
 }
