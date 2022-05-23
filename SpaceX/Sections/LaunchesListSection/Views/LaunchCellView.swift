@@ -46,6 +46,8 @@ struct LaunchCellView: View {
                         detailRow(label: "Rocket:", value: model.rocketInfo)
                         detailRow(label: model.daysLabel, value: model.daysDiffString)
                     }
+                    .accessibilityAddTraits(.isButton)
+                    .accessibilityIdentifier("cellDetails")
                 }
                 
                 Group {
@@ -88,6 +90,7 @@ struct LaunchCellView: View {
         }
         .sheet(item: $webContent) { content in
             WebView(content: content)
+                .accessibilityIdentifier("webview")
         }
     }
 }

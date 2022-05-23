@@ -17,6 +17,8 @@ struct LaunchesListSectionView<T: LaunchesListSectionViewModel>: View {
             LaunchesListView(state: viewmodel.state) {
                 viewmodel.getLaunchesList()
             }
+            .accessibility(addTraits: .isButton)
+            .accessibilityIdentifier("launchesList")
         }
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
@@ -26,6 +28,7 @@ struct LaunchesListSectionView<T: LaunchesListSectionViewModel>: View {
                             Text("ASC").tag(SortOrder.forward)
                             Text("DESC").tag(SortOrder.reverse)
                         }
+                        .accessibilityIdentifier("sortingPicker")
                     }
                     
                     Section(header: Text("Filter")) {
@@ -39,6 +42,8 @@ struct LaunchesListSectionView<T: LaunchesListSectionViewModel>: View {
                             Text("Failed")
                                 .tag(LaunchFilter.Status.failedOnly)
                         }
+                        .pickerStyle(MenuPickerStyle())
+                        .accessibilityIdentifier("fontPicker")
                         
                         Text("Years")
                             .contextMenu {
@@ -49,6 +54,9 @@ struct LaunchesListSectionView<T: LaunchesListSectionViewModel>: View {
             label: {
                 Label("Filter", systemImage: "line.3.horizontal.decrease.circle")
             }
+            .accessibility(addTraits: .isButton)
+            .accessibilityIdentifier("menu")
+                
             }
         }
         .onAppear {

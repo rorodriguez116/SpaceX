@@ -34,6 +34,8 @@ struct LaunchesListView: View {
                 
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
+                    .accessibility(addTraits: .isButton)
+                    .accessibility(identifier: "loadingIndicator")
                 
                 Spacer()
             case .loaded(let launches):
@@ -41,6 +43,9 @@ struct LaunchesListView: View {
                     LaunchCellView(model: model(for: launch))
                 }
                 .padding(.top, 16)
+                .accessibility(addTraits: .isButton)
+                .accessibility(identifier: "loadedList")
+                
             case .failed(let message):
                 ErrorCell(message: message, onButtonTap: onErrorTapped)
                     .padding(.top, 60)

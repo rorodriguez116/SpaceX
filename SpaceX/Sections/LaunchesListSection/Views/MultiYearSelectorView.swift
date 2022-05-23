@@ -31,6 +31,7 @@ struct MultiYearSelectorView: View {
                     Text("All")
                 }
             }
+            .accessibilityIdentifier("allYearsButton")
             
             ForEach(years, id: \.self) { year in
                 Button {
