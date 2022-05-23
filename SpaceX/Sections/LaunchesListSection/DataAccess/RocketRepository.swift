@@ -23,5 +23,7 @@ struct DefaultRocketRepository: RocketRepository {
     
     func getRocketsFor(ids: [String]) -> AnyPublisher<[Rocket], Error> {
         webservice.getRocketsFor(ids: ids)
+            .map { $0.docs }
+            .eraseToAnyPublisher()
     }
 }

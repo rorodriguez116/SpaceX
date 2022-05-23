@@ -38,6 +38,9 @@ extension Resolver {
         Resolver.test.register { MockLaunchWebService() }
             .implements(LaunchWebService.self)
             .scope(.shared)
-
+        
+        Resolver.test.register { MockRocketWebService() }
+            .implements(RocketWebService.self)
+            .scope(.shared)
     }
 }

@@ -38,6 +38,8 @@ extension Rocket {
     enum ResourceProvider {
         enum Schema: String {
             case rocketsComplete = "RocketsComplete"
+            case rocketsMid = "RocketsMid"
+            case rocketSingle = "RocketSingle"
         }
         
         static func json(for schema: Schema) throws -> Data {

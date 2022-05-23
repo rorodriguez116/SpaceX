@@ -11,14 +11,10 @@ import Resolver
 
 protocol RocketWebService {
     func getRocketFor(id: String) -> AnyPublisher<Rocket, Error>
-    func getRocketsFor(ids: [String]) -> AnyPublisher<[Rocket], Error> 
+    func getRocketsFor(ids: [String]) -> AnyPublisher<RocketsDTO, Error>
 }
 
 struct DefaultRocketWebService: RocketWebService {
-    struct RocketsContainer: Decodable {
-        let docs: [Rocket]
-    }
-    
     func getRocketFor(id: String) -> AnyPublisher<Rocket, Error> {
         Rapide
             .https
@@ -30,7 +26,7 @@ struct DefaultRocketWebService: RocketWebService {
             .eraseToAnyPublisher()
     }
     
-    func getRocketsFor(ids: [String]) -> AnyPublisher<[Rocket], Error> {
+    func getRocketsFor(ids: [String]) -> AnyPublisher<RocketsDTO, Error> {
         Rapide
             .https
             .host("api.spacexdata.com")
@@ -48,8 +44,7 @@ struct DefaultRocketWebService: RocketWebService {
                     ]
                 ]
             )
-            .execute(.post, decoding: RocketsContainer.self)
-            .map { $0.docs }
+            .execute(.post, decoding: RocketsDTO.self)
             .eraseToAnyPublisher()
     }
 }
