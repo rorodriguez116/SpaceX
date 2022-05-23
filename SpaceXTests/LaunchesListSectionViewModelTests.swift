@@ -53,18 +53,9 @@ class LaunchesListSectionViewModelTests: XCTestCase {
         }
         .store(in: &self.cancellables)
         
-        viewModel.getLaunchesListWithMatchingRocketDataPublisher
-            .receive(on: RunLoop.main)
-            .sink { completion in
-                if case .failure = completion {
-                    viewModel.updateUI(with: "Something went wrong.")
-                }
-            } receiveValue: { result in
-                viewModel.updateUI(with: result, resultByStatus: result)
-                
-                expectation.fulfill()
-            }
-            .store(in: &self.cancellables)
+        viewModel.getLaunchesList(onCompletion: {
+            expectation.fulfill()
+        }, onReceiveValue: nil)
         
         waitForExpectations(timeout: 10)
         // Then
@@ -96,19 +87,11 @@ class LaunchesListSectionViewModelTests: XCTestCase {
         }
         .store(in: &self.cancellables)
         
-        viewModel.getLaunchesListWithMatchingRocketDataPublisher
-            .receive(on: RunLoop.main)
-            .sink { completion in
-                if case .failure = completion {
-                    viewModel.updateUI(with: "Something went wrong.")
-                }
-                
-                expectation.fulfill()
-            } receiveValue: { result in
-                viewModel.updateUI(with: result, resultByStatus: result)
-                XCTFail("Unexpected success")
-            }
-            .store(in: &self.cancellables)
+        viewModel.getLaunchesList(onCompletion: {
+            expectation.fulfill()
+        }, onReceiveValue: {
+            XCTFail("Unexpected success")
+        })
         
         waitForExpectations(timeout: 10)
         // Then

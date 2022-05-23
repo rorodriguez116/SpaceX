@@ -38,10 +38,8 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
         self.setupSubscriptions()
     }
     
-    var getLaunchesListWithMatchingRocketDataPublisher: AnyPublisher<[Launch], Error> {
-        state = .loading
-
-        return launchRepository
+    private var getLaunchesListWithMatchingRocketDataPublisher: AnyPublisher<[Launch], Error> {
+        launchRepository
             .getLaunchesList()
             .then { _launches -> AnyPublisher<[Launch], Error> in
                 let ids = _launches.map { $0.rocketId }
@@ -78,26 +76,35 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
         RocketMatcher.matchRocketsToLaunches(rockets: rockets, launches: launches)
     }
     
-    func updateUI(with result: [Launch], resultByStatus: [Launch]) {
+    private func updateUI(with result: [Launch], resultByStatus: [Launch]) {
         self.state = .loaded(result)
         self.launchYears = Array(Set<Int>(resultByStatus.map { Calendar.current.component(.year, from: $0.date) })).sorted(by: <)
     }
     
-    func updateUI(with errorMessage: String) {
+    private func updateUI(with errorMessage: String) {
         self.state = .failed(errorMessage)
     }
     
     func getLaunchesList() {
+        getLaunchesList(onCompletion: nil, onReceiveValue: nil)
+    }
+    
+    func getLaunchesList(onCompletion: (() -> ())? = nil, onReceiveValue: (() -> ())? = nil) {
+        state = .loading
+
         getLaunchesListWithMatchingRocketDataPublisher
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 if case .failure = completion {
                     self?.updateUI(with: "Something went wrong.")
                 }
+                
+                onCompletion?()
             } receiveValue: { [weak self] result in
                 guard let self = self else { return }
                 self.launches = result
                 self.updateUI(with: result, resultByStatus: result)
+                onReceiveValue?()
             }
             .store(in: &self.subscriptions)
     }
