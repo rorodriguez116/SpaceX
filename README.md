@@ -1,4 +1,6 @@
 
+<img src="https://user-images.githubusercontent.com/32949104/169905410-292a18ce-6e02-4a51-a9f1-95820515c196.png" width="200" height="200">
+
 # iOS App - SpaceX Exercise
 
 The SpaceX Exercise app is a small application that fetches and displays a list of SpaceX launches and company related data from [SpaceX API](https://github.com/r-spacex/SpaceX-API). The app is built using Swift, SwiftUI and Combine.
@@ -43,4 +45,8 @@ The project has unit test coverage for all Models, ViewModels and Repositories.
 
 ## UITests
 The project has UI tests written for main flows, such as filtering launches based on year and opening pages related to a launch, like a video.
+
+https://user-images.githubusercontent.com/32949104/169905119-e7370c40-f05c-4037-81b4-ca04d50cd62f.mp4
+
+
 
