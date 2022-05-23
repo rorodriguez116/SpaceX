@@ -6,12 +6,52 @@
 //
 
 import SwiftUI
+import Resolver
 
 @main
 struct SpaceXApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView<DefaultCompanyDetailsSectionViewModel, DefaultLaunchesListSectionViewModel>()
         }
+    }
+}
+
+// Dependency Injection
+extension Resolver: ResolverRegistering {
+    public static func registerAllServices() {
+        register {
+            DefaultLaunchesListSectionViewModel()
+        }
+
+        register {
+            DefaultCompanyDetailsRepository()
+        }
+        .implements(CompanyDetailsRepository.self)
+        
+        register {
+            DefaultCompanyDetailsWebService()
+        }
+        .implements(CompanyDetailsWebService.self)
+        
+        register {
+            DefaultLaunchRepository()
+        }
+        .implements(LaunchRepository.self)
+        
+        register {
+            DefaultLaunchWebService()
+        }
+        .implements(LaunchWebService.self)
+        
+        register {
+            DefaultRocketWebService()
+        }
+        .implements(RocketWebService.self)
+        
+        register {
+            DefaultRocketRepository()
+        }
+        .implements(RocketRepository.self)
     }
 }

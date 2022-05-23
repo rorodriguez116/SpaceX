@@ -6,16 +6,30 @@
 //
 
 import SwiftUI
+import Combine
+import Resolver
 
-struct ContentView: View {
+struct ContentView<A: CompanyDetailSectionViewModel, T: LaunchesListSectionViewModel>: View {
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            ScrollView {
+                LazyVStack(spacing: 20) {
+                    CompanyDetailsSectionView<A>()
+                    LaunchesListSectionView<T>()
+                }
+                .padding(.top, 16)
+                .padding(.bottom, 100)
+            }
+            .navigationTitle("SpaceX")
+        }
+        .colorScheme(.dark)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView<DesignCompanyDetailsSectionViewModel, DesignLaunchesListSectionViewModel>()
+            .colorScheme(.dark)
     }
 }
