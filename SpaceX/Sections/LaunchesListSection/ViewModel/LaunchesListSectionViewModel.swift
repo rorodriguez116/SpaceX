@@ -11,41 +11,31 @@ import Resolver
 
 protocol LaunchesListSectionViewModel: ObservableObject {
     var sort: SortOrder { get set }
-    var status: LaunchStatusFilter { get set }
+    var status: LaunchFilter.Status { get set }
     var years: [Int] { get set }
     var launchYears: [Int] { get set }
     var state: ListState<[Launch]> { get }
 
-    init(launchRepository: LaunchRepository, rocketRepository: RocketRepository)
+    init()
     
     func getLaunchesList()
 }
 
-enum LaunchStatusFilter {
-    case successOnly
-    case failedOnly
-    case all
-}
-
 final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
-    private var launchRepository: LaunchRepository
-    private var rocketRepository: RocketRepository
+    @Injected private var launchRepository: LaunchRepository
+    @Injected private var rocketRepository: RocketRepository
     
     private var subscriptions = Set<AnyCancellable>()
     private var launches = [Launch]()
-    
-    @Published var sort: SortOrder = .forward
-    @Published var status: LaunchStatusFilter = .all
-    @Published var years = [Int]()
-    
+     
     var launchYears: [Int] = []
-    
+
+    @Published var sort: SortOrder = .forward
+    @Published var status: LaunchFilter.Status = .all
+    @Published var years = [Int]()
     @Published var state: ListState<[Launch]> = .idle
     
-    init(launchRepository: LaunchRepository, rocketRepository: RocketRepository) {
-        self.launchRepository = launchRepository
-        self.rocketRepository = rocketRepository
-        
+    init() {
         self.setupSubscriptions()
     }
     
@@ -74,45 +64,13 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
         .store(in: &self.subscriptions)
     }
     
-    private func applySortAndFilters(launches: [Launch], status: LaunchStatusFilter, years: [Int], sort: SortOrder) -> [Launch] {
-        // Read
-        var launches = launches
-        
-        // Filter by status
-        if !(status == .all)  {
-            launches = launches.filter { status == .successOnly ? $0.status == .success : $0.status == .failure }
-        }
-        
-        // Filter by years selected
-        if !years.isEmpty {
-            launches = launches.filter { years.contains(Calendar.current.component(.year, from: $0.date)) }
-        }
-        
-        // Sort
-        launches = launches.sorted { a, b in
-            if sort == .forward {
-                return a.date < b.date
-            } else {
-                return a.date > b.date
-            }
-        }
-        
-        return launches
+    private func applySortAndFilters(launches: [Launch], status: LaunchFilter.Status, years: [Int], sort: SortOrder) -> [Launch] {
+        LaunchFilter.applySortAndFilters(launches: launches, status: status, years: years, sort: sort)
     }
     
     /// Returns a list of updated launches containing new data of its corresponding rockets.
     private func matchRocketsToLaunches(rockets: [Rocket], launches: [Launch]) -> [Launch] {
-        let collection = launches.compactMap { launch -> Launch in
-            guard let rocket = rockets.first(where: { $0.id == launch.rocketId }) else { return launch }
-            
-            var _launch = launch
-            _launch.rocketName = rocket.name
-            _launch.rocketType = rocket.type
-            
-            return _launch
-        }
-        
-        return collection
+        RocketMatcher.matchRocketsToLaunches(rockets: rockets, launches: launches)
     }
     
     private func updateUI(with result: [Launch]) {
@@ -121,16 +79,18 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
         self.state = .loaded(self.launches)
     }
     
+    private func updateUI(with errorMessage: String) {
+        self.state = .failed(errorMessage)
+    }
     
     func getLaunchesList() {
-        guard state.canLoad else { return }
         state = .loading
         
         getLaunchesListWithMatchingRocketDataPublisher
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 if case .failure = completion {
-                    self?.state = .failed("Something went wrong.")
+                    self?.updateUI(with: "Something went wrong.")
                 }
             } receiveValue: { [weak self] result in
                 guard let self = self else { return }

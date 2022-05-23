@@ -9,8 +9,8 @@ import SwiftUI
 import Kingfisher
 import Resolver
 
-struct LaunchesListSectionView: View {
-    @StateObject private var viewmodel = DefaultLaunchesListSectionViewModel(launchRepository: Resolver.resolve(), rocketRepository: Resolver.resolve())
+struct LaunchesListSectionView<T: LaunchesListSectionViewModel>: View {
+    @StateObject private var viewmodel = T()
     
     var body: some View {
         SectionView(title: "LAUNCHES") {
@@ -31,13 +31,13 @@ struct LaunchesListSectionView: View {
                     Section(header: Text("Filter")) {
                         Picker(selection: $viewmodel.status, label: Text("Sorting options")) {
                             Text("All")
-                                .tag(LaunchStatusFilter.all)
+                                .tag(LaunchFilter.Status.all)
                             
                             Text("Successful")
-                                .tag(LaunchStatusFilter.successOnly)
+                                .tag(LaunchFilter.Status.successOnly)
                         
                             Text("Failed")
-                                .tag(LaunchStatusFilter.failedOnly)
+                                .tag(LaunchFilter.Status.failedOnly)
                         }
                         
                         Text("Years")
@@ -59,6 +59,6 @@ struct LaunchesListSectionView: View {
 
 struct LaunchesListSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        LaunchesListSectionView()
+        LaunchesListSectionView<DesignLaunchesListSectionViewModel>()
     }
 }

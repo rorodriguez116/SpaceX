@@ -12,7 +12,7 @@ import Resolver
 struct SpaceXApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView<DefaultCompanyDetailsSectionViewModel>()
+            ContentView<DefaultCompanyDetailsSectionViewModel, DefaultLaunchesListSectionViewModel>()
         }
     }
 }
@@ -21,7 +21,7 @@ struct SpaceXApp: App {
 extension Resolver: ResolverRegistering {
     public static func registerAllServices() {
         register {
-            DefaultLaunchesListSectionViewModel(launchRepository: DefaultLaunchRepository(), rocketRepository: DefaultRocketRepository())
+            DefaultLaunchesListSectionViewModel()
         }
 
         register {
