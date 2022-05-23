@@ -15,7 +15,7 @@ protocol CompanyDetailSectionViewModel: ObservableObject {
 
     init() 
     
-    func getCompanyDetails()
+    func getCompanyDetails(completion block: (() -> ())?) 
 }
 
 
@@ -41,10 +41,18 @@ class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
         
         return "\(details.companyName) was founded by \(details.founderName) in \(details.year). It has now \(details.employeesCount) employees, \(details.launchSitesCount) launch sites, and is valued at \(valuation)."
     }
+        
+    func updateUI(with error: String) {
+        self.state = .failed(error)
+    }
+    
+    func updateUI(with details: CompanyDetails) {
+        self.state = .loaded(details)
+    }
     
     required init() {}
     
-    func getCompanyDetails() {
+    func getCompanyDetails(completion block: (() -> ())? = nil) {
         guard state.canLoad else { return }
         state = .loading
         
@@ -52,12 +60,13 @@ class DefaultCompanyDetailsSectionViewModel: CompanyDetailSectionViewModel {
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 if case .failure = completion {
-                    self?.state = .failed("Something went wrong.")
+                    self?.updateUI(with: "Something went wrong.")
                 }
+                
+                block?()
             } receiveValue: { [weak self] details in
                 guard let self = self else { return }
-                
-                self.state = .loaded(details)
+                self.updateUI(with: details)
             }
             .store(in: &self.subscriptions)
     }

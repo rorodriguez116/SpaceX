@@ -75,6 +75,7 @@
 		A9936DF0283BD830008AEE35 /* RocketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9936DEF283BD830008AEE35 /* RocketDTO.swift */; };
 		A9936DF5283BDCA0008AEE35 /* RocketSingle.json in Resources */ = {isa = PBXBuildFile; fileRef = A9936DF4283BDCA0008AEE35 /* RocketSingle.json */; };
 		A9936DF7283BDDD4008AEE35 /* RocketDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9936DF6283BDDD4008AEE35 /* RocketDTOTests.swift */; };
+		A9936DF9283BE892008AEE35 /* CompanyDetailsSectionViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9936DF8283BE892008AEE35 /* CompanyDetailsSectionViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		A9936DEF283BD830008AEE35 /* RocketDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDTO.swift; sourceTree = "<group>"; };
 		A9936DF4283BDCA0008AEE35 /* RocketSingle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RocketSingle.json; sourceTree = "<group>"; };
 		A9936DF6283BDDD4008AEE35 /* RocketDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDTOTests.swift; sourceTree = "<group>"; };
+		A9936DF8283BE892008AEE35 /* CompanyDetailsSectionViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsSectionViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 				A96C280E283A974D002E7200 /* Utils */,
 				A96C280F283A9756002E7200 /* Models */,
 				A96C0FDE283B2C36005AE36B /* LaunchesListSectionViewModelTests.swift */,
+				A9936DF8283BE892008AEE35 /* CompanyDetailsSectionViewModelTests.swift */,
 				A96C0FE0283B2E1F005AE36B /* Resolver+XCTest.swift */,
 			);
 			path = SpaceXTests;
@@ -705,6 +708,7 @@
 				A96C0FE9283BCE6D005AE36B /* LaunchRepositoryTests.swift in Sources */,
 				A96C0FCD283B069D005AE36B /* RocketTests.swift in Sources */,
 				A96C0FD1283B10D6005AE36B /* LaunchFilterTest.swift in Sources */,
+				A9936DF9283BE892008AEE35 /* CompanyDetailsSectionViewModelTests.swift in Sources */,
 				A95967FC2836AF8A0053AEB6 /* SpaceXTests.swift in Sources */,
 				A96C281D283AA8BD002E7200 /* CompanyDetailsTests.swift in Sources */,
 				A96C0FDF283B2C36005AE36B /* LaunchesListSectionViewModelTests.swift in Sources */,

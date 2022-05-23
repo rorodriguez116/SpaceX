@@ -17,7 +17,7 @@ struct CompanyDetailsSectionView<A: CompanyDetailSectionViewModel>: View {
             }
         }
         .onAppear {
-            viewmodel.getCompanyDetails()
+            viewmodel.getCompanyDetails(completion: nil)
         }
     }
 }

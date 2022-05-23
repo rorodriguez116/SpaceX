@@ -10,6 +10,15 @@ Additionally, SpaceX Exercise follows [semantic versioning](http://semver.org/) 
 #### Breaking Changes
 
 #### Added
+- Added `Launch`, `Rocket`, `RocketMatcher` and `LaunchFilter` models.
+- Added `LaunchesListSectionView`, `LaunchesListSectionViewModel`, sub-views and other dependencies. 
+- Added `CompanyDetailSectionView`, `CompanyDetailSectionViewModel`, sub-views, and other dependencies.
+- Added `CompanyDetailsRepository`, `DefaultCompanyDetailsRepository`, `DefaultCompanyDetailsWebService` and `CompanyDetailsWebService`.
+- Added `LaunchRepository`, `DefaultLaunchRepository`, `DefaultLaunchWebService` and `LaunchWebService`.
+- Added `RocketRepository`, `DefaultRocketRepository`, `DefaultRocketWebService` and `RocketWebService`.
+- Added unit tests for `Launch`, `Rocket`, `RocketMatcher`, `LaunchFilter` and `RocketsDTO`.
+- Added unit tests for `LaunchRepository`, `CompanyDetailsRepository` and `RocketRepository`
+- Added unit tests for `LaunchesListSectionViewModel`.
 
 #### Updated
 

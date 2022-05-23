@@ -10,7 +10,7 @@ import Combine
 
 final class DesignCompanyDetailsSectionViewModel: DefaultCompanyDetailsSectionViewModel {
     
-    override func getCompanyDetails() {
+    override func getCompanyDetails(completion block: (() -> ())? = nil) {
         guard state.canLoad else { return }
         self.state = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
