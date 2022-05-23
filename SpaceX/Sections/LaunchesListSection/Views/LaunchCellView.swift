@@ -37,6 +37,7 @@ struct LaunchCellView: View {
                 HStack(alignment: .top) {
                     KFImage(model.missionImageUrl)
                         .resizable()
+                        .aspectRatio(contentMode: .fit)
                         .frame(width: 45, height: 45, alignment: .center)
                     
                     VStack(alignment: .leading, spacing: 4.5) {
