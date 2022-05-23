@@ -21,6 +21,7 @@ Additionally, SpaceX Exercise follows [semantic versioning](http://semver.org/) 
 - Added unit tests for `LaunchesListSectionViewModel`, `CompanyDetailSectionViewModel`.
 
 #### Updated
+- Updated menu style. 
 
 #### Removed
 
