@@ -11,11 +11,11 @@ import Rapide
 import Resolver
 
 protocol LaunchWebService {
-    func getLatestLaunches() -> AnyPublisher<[Launch], Error>
+    func getAllLaunches() -> AnyPublisher<[Launch], Error>
 }
 
 struct DefaultLaunchWebService: LaunchWebService {
-    func getLatestLaunches() -> AnyPublisher<[Launch], Error> {
+    func getAllLaunches() -> AnyPublisher<[Launch], Error> {
         Rapide
             .https
             .host(Config.EnvironmentKeys.domainName)

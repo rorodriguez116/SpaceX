@@ -12,8 +12,11 @@ extension Resolver {
     static var test: Resolver!
     
     static func resetUnitTestRegistrations() {
+        // Update DI system to use mock models.
+
         Resolver.test = Resolver(child: .main)
         Resolver.root = Resolver.test
+        
         Resolver.test.register {
             MockLaunchRepository()
         }
@@ -27,5 +30,14 @@ extension Resolver {
         Resolver.test.register { MockRocketRepository() }
             .implements(RocketRepository.self)
             .scope(.shared)
+        
+        Resolver.test.register { MockCompanyDetailsWebService() }
+            .implements(CompanyDetailsWebService.self)
+            .scope(.shared)
+        
+        Resolver.test.register { MockLaunchWebService() }
+            .implements(LaunchWebService.self)
+            .scope(.shared)
+
     }
 }

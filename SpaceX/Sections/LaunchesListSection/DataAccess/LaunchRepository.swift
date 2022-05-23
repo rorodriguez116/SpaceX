@@ -17,7 +17,7 @@ struct DefaultLaunchRepository: LaunchRepository {
     @Injected private var webservice: LaunchWebService
     
     func getLaunchesList() -> AnyPublisher<[Launch], Error> {
-        webservice.getLatestLaunches()
+        webservice.getAllLaunches()
     }
 }
 
