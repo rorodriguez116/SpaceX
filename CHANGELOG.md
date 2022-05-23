@@ -10,6 +10,21 @@ Additionally, SpaceX Exercise follows [semantic versioning](http://semver.org/) 
 #### Breaking Changes
 
 #### Added
+
+#### Updated
+
+#### Removed
+
+#### Fixed 
+
+
+## [1.0.0]
+
+### Release Notes
+
+#### Breaking Changes
+
+#### Added
 - Added `Launch`, `Rocket`, `RocketMatcher` and `LaunchFilter` models.
 - Added `LaunchesListSectionView`, `LaunchesListSectionViewModel`, sub-views and other dependencies. 
 - Added `CompanyDetailSectionView`, `CompanyDetailSectionViewModel`, sub-views, and other dependencies.
