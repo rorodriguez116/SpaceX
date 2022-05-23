@@ -72,6 +72,7 @@ extension Launch {
         enum Schema: String {
             case launchesComplete = "LaunchesComplete"
             case launchesIncomplete = "LaunchesIncomplete"
+            case launchesLimited = "LaunchesCompleteLimited"
         }
         
         static func json(for schema: Schema) throws -> Data {

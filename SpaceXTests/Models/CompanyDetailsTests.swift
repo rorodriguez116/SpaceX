@@ -11,7 +11,7 @@ import XCTest
 class CompanyDetailsTests: XCTestCase {
     private typealias Resource = CompanyDetails.ResourceProvider
     
-    func testThatComoanyDetailsCanBeDecoded() throws {
+    func testThatCompanyDetailsCanBeDecoded() throws {
         // Given
         let json = try Resource.json(for: .companyDetailsComplete)
         
