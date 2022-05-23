@@ -74,6 +74,7 @@
 		A96C2823283AB3D2002E7200 /* Rockets.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C2822283AB3D2002E7200 /* Rockets.json */; };
 		A9936DF0283BD830008AEE35 /* RocketDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9936DEF283BD830008AEE35 /* RocketDTO.swift */; };
 		A9936DF5283BDCA0008AEE35 /* RocketSingle.json in Resources */ = {isa = PBXBuildFile; fileRef = A9936DF4283BDCA0008AEE35 /* RocketSingle.json */; };
+		A9936DF7283BDDD4008AEE35 /* RocketDTOTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9936DF6283BDDD4008AEE35 /* RocketDTOTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +166,7 @@
 		A96C2822283AB3D2002E7200 /* Rockets.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Rockets.json; sourceTree = "<group>"; };
 		A9936DEF283BD830008AEE35 /* RocketDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDTO.swift; sourceTree = "<group>"; };
 		A9936DF4283BDCA0008AEE35 /* RocketSingle.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RocketSingle.json; sourceTree = "<group>"; };
+		A9936DF6283BDDD4008AEE35 /* RocketDTOTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketDTOTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -461,6 +463,7 @@
 				A96C281C283AA8BD002E7200 /* CompanyDetailsTests.swift */,
 				A96C0FCC283B069D005AE36B /* RocketTests.swift */,
 				A96C0FD8283B23C9005AE36B /* RocketMatcherTests.swift */,
+				A9936DF6283BDDD4008AEE35 /* RocketDTOTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -709,6 +712,7 @@
 				A96C2802283A8F5E002E7200 /* AnyLocalizedError.swift in Sources */,
 				A96C0FD9283B23C9005AE36B /* RocketMatcherTests.swift in Sources */,
 				A96C0FE1283B2E1F005AE36B /* Resolver+XCTest.swift in Sources */,
+				A9936DF7283BDDD4008AEE35 /* RocketDTOTests.swift in Sources */,
 				A96C280D283A972C002E7200 /* BaseResourceProvider.swift in Sources */,
 				A96C0FEB283BD258005AE36B /* RocketRepositoryTests.swift in Sources */,
 			);

@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct RocketsDTO: Decodable {
+struct RocketsDTO: Decodable, Equatable {
     let docs: [Rocket]
 }

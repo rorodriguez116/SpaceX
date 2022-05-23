@@ -38,5 +38,4 @@ class RocketMatcherTests: XCTestCase {
         let rockets = try JSONDecoder().decode([Rocket].self, from: json)
         return rockets
     }
-    
 }
