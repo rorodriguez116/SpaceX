@@ -10,7 +10,7 @@ import XCTest
 import Resolver
 import Combine
 
-class LaunchesListSectionViewModel: XCTestCase {
+class LaunchesListSectionViewModelTests: XCTestCase {
     
     private var cancellables: Set<AnyCancellable>!
 
@@ -60,7 +60,7 @@ class LaunchesListSectionViewModel: XCTestCase {
                     viewModel.updateUI(with: "Something went wrong.")
                 }
             } receiveValue: { result in
-                viewModel.updateUI(with: result)
+                viewModel.updateUI(with: result, resultByStatus: result)
                 
                 expectation.fulfill()
             }
@@ -105,7 +105,7 @@ class LaunchesListSectionViewModel: XCTestCase {
                 
                 expectation.fulfill()
             } receiveValue: { result in
-                viewModel.updateUI(with: result)
+                viewModel.updateUI(with: result, resultByStatus: result)
                 XCTFail("Unexpected success")
             }
             .store(in: &self.cancellables)

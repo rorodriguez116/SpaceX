@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct MultiYearSelectorView: View {
-    @State var years: [Int]
+    var years: [Int]
     
     @Binding var selectedYears: [Int]
+    
+    let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .none
+        return formatter
+    }()
     
     var body: some View {
         VStack {
@@ -38,9 +44,9 @@ struct MultiYearSelectorView: View {
                 } label: {
                     HStack {
                         if selectedYears.contains(year) {
-                            Label("\(year)", systemImage: "checkmark")
+                            Label(numberFormatter.string(from: NSNumber(value: year)) ?? "", systemImage: "checkmark")
                         } else {
-                            Text("\(year)")
+                            Text(numberFormatter.string(from: NSNumber(value: year)) ?? "")
                         }
                     }
                 }

@@ -28,8 +28,7 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     private var subscriptions = Set<AnyCancellable>()
     private var launches = [Launch]()
      
-    var launchYears: [Int] = []
-
+    @Published var launchYears: [Int] = []
     @Published var sort: SortOrder = .forward
     @Published var status: LaunchFilter.Status = .all
     @Published var years = [Int]()
@@ -62,7 +61,9 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
             if !self.launches.isEmpty {
                 // Update model and UI
                 let launches = self.applySortAndFilters(launches: self.launches, status: status, years: years, sort: sort)
-                self.state = .loaded(launches)
+                let launchesFilterByStatus = self.applySortAndFilters(launches: self.launches, status: status, years: [], sort: sort)
+                
+                self.updateUI(with: launches, resultByStatus: launchesFilterByStatus)
             }
         }
         .store(in: &self.subscriptions)
@@ -77,10 +78,9 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
         RocketMatcher.matchRocketsToLaunches(rockets: rockets, launches: launches)
     }
     
-    func updateUI(with result: [Launch]) {
-        self.launches = result
-        self.launchYears = Array(Set<Int>(result.map { Calendar.current.component(.year, from: $0.date) })).sorted(by: <)
-        self.state = .loaded(self.launches)
+    func updateUI(with result: [Launch], resultByStatus: [Launch]) {
+        self.state = .loaded(result)
+        self.launchYears = Array(Set<Int>(resultByStatus.map { Calendar.current.component(.year, from: $0.date) })).sorted(by: <)
     }
     
     func updateUI(with errorMessage: String) {
@@ -96,7 +96,8 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
                 }
             } receiveValue: { [weak self] result in
                 guard let self = self else { return }
-                self.updateUI(with: result)
+                self.launches = result
+                self.updateUI(with: result, resultByStatus: result)
             }
             .store(in: &self.subscriptions)
     }

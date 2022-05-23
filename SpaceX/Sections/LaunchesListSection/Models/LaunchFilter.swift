@@ -8,7 +8,7 @@
 import Foundation
 
 struct LaunchFilter {
-    enum Status {
+    enum Status: Equatable {
         case successOnly
         case failedOnly
         case all
