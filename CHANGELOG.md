@@ -18,7 +18,7 @@ Additionally, SpaceX Exercise follows [semantic versioning](http://semver.org/) 
 - Added `RocketRepository`, `DefaultRocketRepository`, `DefaultRocketWebService` and `RocketWebService`.
 - Added unit tests for `Launch`, `Rocket`, `RocketMatcher`, `LaunchFilter` and `RocketsDTO`.
 - Added unit tests for `LaunchRepository`, `CompanyDetailsRepository` and `RocketRepository`
-- Added unit tests for `LaunchesListSectionViewModel`.
+- Added unit tests for `LaunchesListSectionViewModel`, `CompanyDetailSectionViewModel`.
 
 #### Updated
 
