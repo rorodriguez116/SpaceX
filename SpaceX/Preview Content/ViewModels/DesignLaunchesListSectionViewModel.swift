@@ -18,7 +18,7 @@ final class DesignLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     
     var launchYears: [Int] = []
     
-    @Published var state: ListState<[Launch]> = .loading
+    @Published var state: ListState<[Launch]> = .idle
 
     init() {
         setupSubscriptions()
@@ -27,20 +27,22 @@ final class DesignLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     private func setupSubscriptions() {
         Publishers.CombineLatest3($status, $years, $sort).sink { status, years, sort in
             // Update model and UI
-            let launches = LaunchFilter.applySortAndFilters(launches: self.launches, status: status, years: years, sort: sort)
-            self.state = .loaded(launches)
+            if !self.launches.isEmpty {
+                let launches = LaunchFilter.applySortAndFilters(launches: self.launches, status: status, years: years, sort: sort)
+                self.state = .loaded(launches)
+            }
         }
         .store(in: &self.subscriptions)
     }
- 
+    
     func getLaunchesList() {
         self.state = .loading
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
             var result = Launch.previewLaunches
             let rockets = Rocket.previewRockets
             result = RocketMatcher.matchRocketsToLaunches(rockets: rockets, launches: result)
-            self.launchYears = Array(Set<Int>(result.map { Calendar.current.component(.year, from: $0.date) }))
-            self.launches = result 
+            self.launchYears = Array(Set<Int>(result.map { Calendar.current.component(.year, from: $0.date) })).sorted(by: <)
+            self.launches = result
             self.state = .loaded(result)
         }
     }

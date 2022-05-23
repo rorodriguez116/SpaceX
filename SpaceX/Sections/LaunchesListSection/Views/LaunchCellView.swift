@@ -14,7 +14,7 @@ struct LaunchCellView: View {
     
     let model: LaunchCellViewModel
     
-    func detailRow(label: String, value: String, bold: Bool = false) -> some View {
+    private func detailRow(label: String, value: String, bold: Bool = false) -> some View {
         HStack {
             Text(label)
             
@@ -46,10 +46,17 @@ struct LaunchCellView: View {
                         detailRow(label: model.daysLabel, value: model.daysDiffString)
                     }
                 }
-                                
-                Image(systemName: model.status == .undetermined ? "questionmark" : model.status == .success ? "checkmark" : "xmark")
-                    .frame(width: 16, height: 16, alignment: .center)
-                    .padding(.top, 4)
+                
+                Group {
+                    if model.status == .undetermined {
+                        Rectangle()
+                            .foregroundColor(Color(.systemBackground))
+                    } else {
+                        Image(systemName: model.status == .success ? "checkmark" : "xmark")
+                    }
+                }
+                .frame(width: 16, height: 16, alignment: .center)
+                .padding(.top, 4)
             }
             
             Rectangle()

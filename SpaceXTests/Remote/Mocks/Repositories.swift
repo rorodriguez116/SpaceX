@@ -9,23 +9,42 @@
 import Combine
 import Foundation
 
-struct MockCompanyDetailsRepository: CompanyDetailsRepository {
+final class MockCompanyDetailsRepository: CompanyDetailsRepository {
     var getCompanyDetailsResult: Result<CompanyDetails, Error> = .failure(AnyLocalizedError())
     
     func getCompanyDetails() -> AnyPublisher<CompanyDetails, Error> {
         Future<CompanyDetails, Error> { promise in
-            promise(getCompanyDetailsResult)
+            promise(self.getCompanyDetailsResult)
         }
         .eraseToAnyPublisher()
     }
 }
 
-struct MockLaunchRepository: LaunchRepository {
+final class MockLaunchRepository: LaunchRepository {
     var getLaunchesListResult: Result<[Launch], Error> = .failure(AnyLocalizedError())
 
     func getLaunchesList() -> AnyPublisher<[Launch], Error> {
         Future<[Launch], Error> { promise in
-            promise(getLaunchesListResult)
+            promise(self.getLaunchesListResult)
+        }
+        .eraseToAnyPublisher()
+    }
+}
+
+final class MockRocketRepository: RocketRepository {
+    var getRocketsForIdsResult: Result<[Rocket], Error> = .failure(AnyLocalizedError())
+    var getRocketsForIdResult: Result<Rocket, Error> = .failure(AnyLocalizedError())
+    
+    func getRocketFor(id: String) -> AnyPublisher<Rocket, Error> {
+        Future<Rocket, Error> { promise in
+            promise(self.getRocketsForIdResult)
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func getRocketsFor(ids: [String]) -> AnyPublisher<[Rocket], Error> {
+        Future<[Rocket], Error> { promise in
+            promise(self.getRocketsForIdsResult)
         }
         .eraseToAnyPublisher()
     }

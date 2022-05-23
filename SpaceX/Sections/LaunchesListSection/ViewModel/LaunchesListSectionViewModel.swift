@@ -39,8 +39,10 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
         self.setupSubscriptions()
     }
     
-    private var getLaunchesListWithMatchingRocketDataPublisher: AnyPublisher<[Launch], Error> {
-        launchRepository
+    var getLaunchesListWithMatchingRocketDataPublisher: AnyPublisher<[Launch], Error> {
+        state = .loading
+
+        return launchRepository
             .getLaunchesList()
             .then { _launches -> AnyPublisher<[Launch], Error> in
                 let ids = _launches.map { $0.rocketId }
@@ -57,9 +59,11 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
     
     private func setupSubscriptions() {
         Publishers.CombineLatest3($status, $years, $sort).sink { status, years, sort in
-            // Update model and UI
-            let launches = self.applySortAndFilters(launches: self.launches, status: status, years: years, sort: sort)
-            self.state = .loaded(launches)
+            if !self.launches.isEmpty {
+                // Update model and UI
+                let launches = self.applySortAndFilters(launches: self.launches, status: status, years: years, sort: sort)
+                self.state = .loaded(launches)
+            }
         }
         .store(in: &self.subscriptions)
     }
@@ -73,19 +77,17 @@ final class DefaultLaunchesListSectionViewModel: LaunchesListSectionViewModel {
         RocketMatcher.matchRocketsToLaunches(rockets: rockets, launches: launches)
     }
     
-    private func updateUI(with result: [Launch]) {
+    func updateUI(with result: [Launch]) {
         self.launches = result
-        self.launchYears = Array(Set<Int>(result.map { Calendar.current.component(.year, from: $0.date) }))
+        self.launchYears = Array(Set<Int>(result.map { Calendar.current.component(.year, from: $0.date) })).sorted(by: <)
         self.state = .loaded(self.launches)
     }
     
-    private func updateUI(with errorMessage: String) {
+    func updateUI(with errorMessage: String) {
         self.state = .failed(errorMessage)
     }
     
     func getLaunchesList() {
-        state = .loading
-        
         getLaunchesListWithMatchingRocketDataPublisher
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
