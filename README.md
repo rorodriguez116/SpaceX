@@ -21,7 +21,7 @@ The project uses Swift Package Manager as its dependency manager.
 
 ## Dependency Injection
 
-  
+The project uses Resolver as its dependency injection system. For unit testing Resolver is configured to use mock version of some objects to perform testing.  
 
 ## SwiftUI Previews
 Most if not all views have SwiftUI Previews enabled, to preview them please choose SpaceX-Dev build scheme as SpaceX build scheme is not prepared for previews.
