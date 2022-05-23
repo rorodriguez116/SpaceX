@@ -11,7 +11,6 @@
 		A95967ED2836AF880053AEB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95967EC2836AF880053AEB6 /* ContentView.swift */; };
 		A95967EF2836AF8A0053AEB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A95967EE2836AF8A0053AEB6 /* Assets.xcassets */; };
 		A95967F22836AF8A0053AEB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A95967F12836AF8A0053AEB6 /* Preview Assets.xcassets */; };
-		A95967FC2836AF8A0053AEB6 /* SpaceXTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95967FB2836AF8A0053AEB6 /* SpaceXTests.swift */; };
 		A95968062836AF8A0053AEB6 /* SpaceXUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95968052836AF8A0053AEB6 /* SpaceXUITests.swift */; };
 		A95968082836AF8A0053AEB6 /* SpaceXUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95968072836AF8A0053AEB6 /* SpaceXUITestsLaunchTests.swift */; };
 		A95968182836BD690053AEB6 /* CompanyDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95968172836BD690053AEB6 /* CompanyDetails.swift */; };
@@ -102,7 +101,6 @@
 		A95967EE2836AF8A0053AEB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A95967F12836AF8A0053AEB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A95967F72836AF8A0053AEB6 /* SpaceXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A95967FB2836AF8A0053AEB6 /* SpaceXTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXTests.swift; sourceTree = "<group>"; };
 		A95968012836AF8A0053AEB6 /* SpaceXUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceXUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A95968052836AF8A0053AEB6 /* SpaceXUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXUITests.swift; sourceTree = "<group>"; };
 		A95968072836AF8A0053AEB6 /* SpaceXUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceXUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -249,14 +247,11 @@
 		A95967FA2836AF8A0053AEB6 /* SpaceXTests */ = {
 			isa = PBXGroup;
 			children = (
-				A95967FB2836AF8A0053AEB6 /* SpaceXTests.swift */,
 				A96C0FE5283BC372005AE36B /* DataAccess */,
 				A96C2810283A9767002E7200 /* Remote */,
 				A96C280E283A974D002E7200 /* Utils */,
 				A96C280F283A9756002E7200 /* Models */,
-				A96C0FDE283B2C36005AE36B /* LaunchesListSectionViewModelTests.swift */,
-				A9936DF8283BE892008AEE35 /* CompanyDetailsSectionViewModelTests.swift */,
-				A96C0FE0283B2E1F005AE36B /* Resolver+XCTest.swift */,
+				A9936DFA283BEE36008AEE35 /* ViewModels */,
 			);
 			path = SpaceXTests;
 			sourceTree = "<group>";
@@ -451,6 +446,7 @@
 		A96C280E283A974D002E7200 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A96C0FE0283B2E1F005AE36B /* Resolver+XCTest.swift */,
 				A96C2801283A8F5E002E7200 /* AnyLocalizedError.swift */,
 				A96C280C283A972C002E7200 /* BaseResourceProvider.swift */,
 			);
@@ -508,6 +504,15 @@
 				A9936DEF283BD830008AEE35 /* RocketDTO.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A9936DFA283BEE36008AEE35 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				A96C0FDE283B2C36005AE36B /* LaunchesListSectionViewModelTests.swift */,
+				A9936DF8283BE892008AEE35 /* CompanyDetailsSectionViewModelTests.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -709,7 +714,6 @@
 				A96C0FCD283B069D005AE36B /* RocketTests.swift in Sources */,
 				A96C0FD1283B10D6005AE36B /* LaunchFilterTest.swift in Sources */,
 				A9936DF9283BE892008AEE35 /* CompanyDetailsSectionViewModelTests.swift in Sources */,
-				A95967FC2836AF8A0053AEB6 /* SpaceXTests.swift in Sources */,
 				A96C281D283AA8BD002E7200 /* CompanyDetailsTests.swift in Sources */,
 				A96C0FDF283B2C36005AE36B /* LaunchesListSectionViewModelTests.swift in Sources */,
 				A95968332836E6860053AEB6 /* Repositories.swift in Sources */,
