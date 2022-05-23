@@ -24,7 +24,7 @@ struct LaunchesListSectionView<T: LaunchesListSectionViewModel>: View {
             ToolbarItem(placement: .primaryAction) {
                 Menu {
                     Section(header: Text("Sort")) {
-                        Picker(selection: $viewmodel.sort, label: Text("Sorting options")) {
+                        Picker(selection: $viewmodel.sort, label: Text("Sort")) {
                             Text("ASC").tag(SortOrder.forward)
                             Text("DESC").tag(SortOrder.reverse)
                         }
@@ -32,7 +32,7 @@ struct LaunchesListSectionView<T: LaunchesListSectionViewModel>: View {
                     }
                     
                     Section(header: Text("Filter")) {
-                        Picker(selection: $viewmodel.status, label: Text("Sorting options")) {
+                        Picker(selection: $viewmodel.status, label: Text("Status")) {
                             Text("All")
                                 .tag(LaunchFilter.Status.all)
                             
@@ -42,7 +42,6 @@ struct LaunchesListSectionView<T: LaunchesListSectionViewModel>: View {
                             Text("Failed")
                                 .tag(LaunchFilter.Status.failedOnly)
                         }
-                        .pickerStyle(MenuPickerStyle())
                         .accessibilityIdentifier("fontPicker")
                         
                         Text("Years")
