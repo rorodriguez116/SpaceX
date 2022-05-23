@@ -73,6 +73,7 @@ extension Launch {
             case launchesComplete = "LaunchesComplete"
             case launchesIncomplete = "LaunchesIncomplete"
             case launchesLimited = "LaunchesCompleteLimited"
+            case launchesMin = "LaunchesCompleteMin"
         }
         
         static func json(for schema: Schema) throws -> Data {

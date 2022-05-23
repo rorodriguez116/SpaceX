@@ -46,6 +46,8 @@
 		A96C0FCF283B0C38005AE36B /* RocketsComplete.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C0FCE283B0C38005AE36B /* RocketsComplete.json */; };
 		A96C0FD1283B10D6005AE36B /* LaunchFilterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C0FD0283B10D6005AE36B /* LaunchFilterTest.swift */; };
 		A96C0FD7283B218B005AE36B /* LaunchesCompleteLimited.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C0FD6283B218B005AE36B /* LaunchesCompleteLimited.json */; };
+		A96C0FD9283B23C9005AE36B /* RocketMatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C0FD8283B23C9005AE36B /* RocketMatcherTests.swift */; };
+		A96C0FDD283B251F005AE36B /* LaunchesCompleteMin.json in Resources */ = {isa = PBXBuildFile; fileRef = A96C0FDC283B251F005AE36B /* LaunchesCompleteMin.json */; };
 		A96C27E728386BA2002E7200 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27E628386BA2002E7200 /* WebView.swift */; };
 		A96C27E928386BE8002E7200 /* LaunchCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27E828386BE8002E7200 /* LaunchCellView.swift */; };
 		A96C27EB28386C19002E7200 /* LaunchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96C27EA28386C19002E7200 /* LaunchCellViewModel.swift */; };
@@ -122,6 +124,8 @@
 		A96C0FCE283B0C38005AE36B /* RocketsComplete.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RocketsComplete.json; sourceTree = "<group>"; };
 		A96C0FD0283B10D6005AE36B /* LaunchFilterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LaunchFilterTest.swift; path = SpaceXTests/Models/LaunchFilterTest.swift; sourceTree = SOURCE_ROOT; };
 		A96C0FD6283B218B005AE36B /* LaunchesCompleteLimited.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LaunchesCompleteLimited.json; sourceTree = "<group>"; };
+		A96C0FD8283B23C9005AE36B /* RocketMatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RocketMatcherTests.swift; sourceTree = "<group>"; };
+		A96C0FDC283B251F005AE36B /* LaunchesCompleteMin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = LaunchesCompleteMin.json; sourceTree = "<group>"; };
 		A96C27E628386BA2002E7200 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		A96C27E828386BE8002E7200 /* LaunchCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCellView.swift; sourceTree = "<group>"; };
 		A96C27EA28386C19002E7200 /* LaunchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchCellViewModel.swift; sourceTree = "<group>"; };
@@ -425,6 +429,7 @@
 				A96C0FD0283B10D6005AE36B /* LaunchFilterTest.swift */,
 				A96C281C283AA8BD002E7200 /* CompanyDetailsTests.swift */,
 				A96C0FCC283B069D005AE36B /* RocketTests.swift */,
+				A96C0FD8283B23C9005AE36B /* RocketMatcherTests.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 		A96C2819283AA7AE002E7200 /* Schema */ = {
 			isa = PBXGroup;
 			children = (
+				A96C0FDC283B251F005AE36B /* LaunchesCompleteMin.json */,
 				A96C2817283AA421002E7200 /* LaunchesIncomplete.json */,
 				A96C281A283AA7AE002E7200 /* LaunchesComplete.json */,
 				A96C281E283AA9D7002E7200 /* CompanyDetailsComplete.json */,
@@ -587,6 +593,7 @@
 				A96C2818283AA421002E7200 /* LaunchesIncomplete.json in Resources */,
 				A96C2821283AAA50002E7200 /* CompanyDetailsIncomplete.json in Resources */,
 				A96C281B283AA7AE002E7200 /* LaunchesComplete.json in Resources */,
+				A96C0FDD283B251F005AE36B /* LaunchesCompleteMin.json in Resources */,
 				A96C0FD7283B218B005AE36B /* LaunchesCompleteLimited.json in Resources */,
 				A96C0FCF283B0C38005AE36B /* RocketsComplete.json in Resources */,
 			);
@@ -654,6 +661,7 @@
 				A96C281D283AA8BD002E7200 /* CompanyDetailsTests.swift in Sources */,
 				A95968332836E6860053AEB6 /* Repositories.swift in Sources */,
 				A96C2802283A8F5E002E7200 /* AnyLocalizedError.swift in Sources */,
+				A96C0FD9283B23C9005AE36B /* RocketMatcherTests.swift in Sources */,
 				A96C280D283A972C002E7200 /* BaseResourceProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
